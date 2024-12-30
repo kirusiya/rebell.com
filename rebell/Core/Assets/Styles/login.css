@@ -1,0 +1,98 @@
+/**
+ * Login Styles.
+ *
+ * @package BeTheme
+ * @author  Invbit <info@invbit.com>
+ * @link    https://www.invbit.com
+ */
+
+:root {
+  --rebell       : #d2c62e;
+  --rebell-light : #fdf58d;
+  --rebell-dark  : #b7ae26;
+}
+
+body.login {
+  background-color : black;
+}
+
+/* Show custom logo in the login page */
+body.login div#login h1 a {
+  background-image : url(../Images/login-header.png);
+  background-size  : contain;
+  height           : 200px;
+  width            : 100%;
+}
+
+body.login div#login form#loginform {
+  background : transparent;
+  color      : white;
+  padding    : 0 !important;
+  border     : none;
+  /* border     : 1px solid var(--rebell);
+  padding    : 2rem 1.6rem !important; */
+}
+
+body.login div#login input[type=text],
+body.login div#login input[type=password] {
+  color         : white;
+  border        : none;
+  background    : none;
+  border-bottom : 1px solid white;
+  border-radius : 0;
+}
+
+body.login div#login input[type=checkbox] {
+  background    : none;
+  border-color  : white;
+  border-radius : 0;
+}
+
+body.login div#login form#loginform .forgetmenot {
+  float : none !important;
+}
+
+#login form p.submit {
+  display : flex;
+}
+
+/* Modify colors */
+#login input#wp-submit {
+  background-color : var(--rebell);
+  color            : black;
+  border           : none;
+  border-radius    : 99999px;
+  margin           : 1rem auto;
+  padding          : 0 2rem !important;
+}
+
+.login #backtoblog a,
+.login #nav a {
+  color      : white;
+  display    : block;
+  text-align : center;
+}
+
+#login span.dashicons,
+#login .privacy-policy-link {
+  color           : white;
+  text-decoration : none;
+}
+
+#login a:hover {
+  color : var(--rebell-dark) !important;
+}
+
+#login a:focus {
+  box-shadow : none !important;
+}
+
+input:focus {
+  border-color : var(--rebell) !important;
+  box-shadow   : none !important;
+  outline      : none !important;
+}
+
+input[type=checkbox]:checked::before {
+  content : url(data:image/svg+xml;utf8,<svg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20viewBox%3D%270%200%2020%2020%27><path%20d%3D%27M14.83%204.89l1.34.94-5.81%208.38H9.02L5.78%209.67l1.34-1.25%202.57%202.4z%27%20fill%3D%27%2396c11e%27%2F><%2Fsvg>)
+}

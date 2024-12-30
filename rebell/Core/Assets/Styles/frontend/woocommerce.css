@@ -1,0 +1,219 @@
+/**
+ * Woocommerce Styles.
+ *
+ * @package BeTheme
+ * @author  Invbit <info@invbit.com>
+ * @link    https://www.invbit.com
+ */
+
+.Rebell.woocommerce.tax-product_cat ul.products li.product-category,
+.Rebell.woocommerce.tax-product_cat ul.products li.product {
+  display        : flex;
+  flex-direction : column;
+  box-sizing     : border-box;
+  border         : 1px solid var(--primary-color);
+  border-radius  : var(--border-radius-lg);
+  overflow       : hidden;
+}
+
+  .Rebell.woocommerce.tax-product_cat ul.products li.product-category a img {
+    max-height : 200px;
+    object-fit : cover;
+  }
+
+  .Rebell.woocommerce.tax-product_cat ul.products li.product-category a div {
+    position       : absolute;
+    bottom         : 0;
+    width          : 100%;
+    text-align     : center;
+    text-transform : uppercase;
+    background     : rgba( 0, 0, 0, .35 );
+  }
+
+    .Rebell.woocommerce.tax-product_cat ul.products li.product-category a div h2 {
+      font-weight : bold;
+      padding     : 0.2rem !important;
+    }
+    @media screen and (min-width: 768px) {
+      .Rebell.woocommerce.tax-product_cat ul.products li.product-category a div h2 {
+        font-size : 1.6em;
+      }
+    }
+
+.Rebell.woocommerce.tax-product_cat .products.grid {
+  display   : flex;
+  flex-wrap : wrap;
+}
+
+.Rebell.woocommerce ul.products li.product .ProductInfo {
+  flex-grow  : 1;
+  background : none;
+  text-align : center;
+  padding    : 1rem 1rem 0 1rem;
+}
+  .Rebell.woocommerce ul.products li.product .ProductInfo h4 a,
+  .Rebell.woocommerce ul.products li.product .ProductInfo .price {
+    color          : var(--primary-color) !important;
+    text-transform : uppercase;
+    font-size      : 1.2rem;
+    font-weight    : bold;
+  }
+
+.Rebell.woocommerce ul.products li.product .ProductActions {
+  text-align: center;
+}
+  .Rebell.woocommerce ul.products li.product .ProductActions a,
+  .Rebell.woocommerce ul.products li.product .ProductActions button {
+    color         : var(--darkest-color);
+    margin-bottom : 1.2rem;
+  }
+
+.Rebell.woocommerce ul.products li.product .ProductActions .add_to_cart_button {
+  padding : .5rem 2rem !important;
+}
+
+.dashicons, .dashicons-before:before {
+  font-family : dashicons !important;
+}
+
+.Rebell.woocommerce button.add_to_cart_button.added::after {
+  content : none;
+}
+
+.woocommerce a.woocommerce-Button.button {
+  background: var(--primary-color);
+  color: var(--darkest-color);
+}
+
+.Rebell .pager .pages {
+  background : var(--primary-color);
+  display    : inline-flex;
+}
+
+  .Rebell .pager .pages .page-numbers {
+    border-radius : 9999px;
+    color       : var(--darkest-color);
+    font-weight : bold;
+  }
+  .Rebell .pager .pages .current {
+    background : var(--darkest-color) !important;
+    color      : var(--primary-color) !important;
+    font-size  : 1.1em;
+  }
+  .Rebell .pager .pages a:hover,
+  .pager .Rebell .pages a.active,
+  .Rebell .pager .pages span.page-numbers.current {
+    background : var(--primary-darker-color);
+  }
+
+@media screen and (min-width: 480px) {
+  .Rebell.woocommerce ul.products li.product-category {
+    width : 48% !important;
+  }
+  
+  .Rebell.woocommerce ul.products li.product-category:nth-child(3n+1) {
+    clear : none;
+  }
+}
+
+/**
+ *  Content single product template.
+ */
+.SingleProduct__Header {
+  display         : flex;
+  flex-wrap       : wrap;
+  justify-content : center;
+  align-items     : flex-end;
+  color           : var(--primary-color);
+}
+  .SingleProduct__Header .SingleProduct__Title {
+    color       : inherit !important;
+    margin      : 0;
+    font-size   : 1.8em;
+    font-weight : bold;
+    line-height : inherit;
+  }
+  .SingleProduct__Header .dash {
+    margin : auto 1em;
+  }
+  .SingleProduct__Header .price {
+    color       : inherit !important;
+    font-size   : 1.4em;
+    font-weight : bold;
+  }
+
+.SingleProduct__Content {
+  text-align : center;
+  margin     : 2rem 0;
+}
+  .SingleProduct__Content .Extras .Options {
+    display         : flex;
+    flex-wrap       : wrap;
+    justify-content : center;
+    margin-bottom   : 2rem;
+  }
+    .SingleProduct__Content .Extras .Title {
+      font-size   : 1rem;
+      font-weight : bold;
+      color       : var(--primary-color);
+    }
+
+    .SingleProduct__Content .Extras .Options .Option {
+      display          : inline-flex;
+      justify-content  : space-between;
+      background-color : transparent;
+      border           : 1px solid var(--primary-color);
+      padding          : .25rem .5rem;
+      margin           : 1%;
+      color            : var(--lightest-color);
+      font-weight      : normal;
+      width            : 100%;
+    }
+      @media screen and (min-width: 768px) {
+        .SingleProduct__Content .Extras .Options .Option {
+          width : 45%;
+        }
+      }
+      .SingleProduct__Content .Extras .Options label.Option {
+        transition : all 300ms;
+        cursor     : pointer;
+      }
+        .SingleProduct__Content .Extras .Options label.Option:hover {
+          color : var(--primary-color);
+        }
+        .SingleProduct__Content .Extras .Options label.Option:before {
+          content : none;
+        }
+        .SingleProduct__Content .Extras .Options label.Option .Name {
+          text-transform : uppercase;
+        }
+        .SingleProduct__Content .Extras .Options label.Option .Price {
+          color : var(--primary-color);
+        }
+      .SingleProduct__Content .Extras .Options input {
+        display : none;
+      }
+      .SingleProduct__Content .Extras .Options input:checked + label.Option {
+        background-color : var(--primary-color);
+        color            : var(--darkest-color) !important;
+      }
+        .SingleProduct__Content .Extras .Options input:checked + label.Option .Price {
+          color : inherit;
+        }
+
+.SingleProduct__Footer,
+.SingleProduct__Footer form.cart {
+  display         : flex;
+  flex-direction  : column;
+  justify-content : center;
+  align-items     : center;
+}
+
+.order-again .button {
+  color : var(--darkest-color) !important;
+}
+
+
+.SingleProduct__Footer .added_to_cart.wc-forward {
+  display: none !important;
+}

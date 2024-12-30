@@ -1,0 +1,74 @@
+/**
+ * Footer Styles.
+ *
+ * @package BeTheme
+ * @author  Invbit <info@invbit.com>
+ * @link    https://www.invbit.com
+ */
+
+#Footer {
+  background : var(--primary-color);
+  color      : var(--darkest-color);
+}
+
+  #Footer .FooterLinks {
+    display         : flex;
+    justify-content : center;
+    flex-wrap       : wrap;
+  }
+
+    #Footer .FooterLinks li:not(:last-of-type) {
+      position     : relative;
+      margin-right : 1.5rem;
+    }
+
+      
+
+    #Footer .FooterLinks li a {
+      color          : var(--darkest-color);
+      text-transform : uppercase;
+      font-size      : .9rem;
+    }
+
+  #Footer .social a i {
+    color           : var(--lightest-color);
+    background      : var(--darkest-color);
+    border-radius   : 100%;
+    height          : 1.8rem;
+    width           : 1.8rem;
+    font-size       : 1.2rem;
+    display         : inline-flex;
+    justify-content : center;
+    align-items     : center;
+    transition      : color 300ms;
+  }
+
+  #Footer .social a:hover {
+    text-decoration : none;
+  }
+
+  #Footer .social a:hover i {
+    color : var(--primary-color);
+  }
+
+
+/*** FOOTER - NEW ***/
+  #Footer .footer_copy{ border-top: unset !important; }
+  #Footer .footer_copy .one{ min-height: unset !important; padding: 0px; margin: 0px; width: 100%; display: flex; flex-direction: column; }
+  #Footer .footer_copy .one .social{  order: 1; padding: 50px 0 15px 0; }
+  #Footer .footer_copy .one .social li{ width: 44px; height: 44px; }
+  #Footer .footer_copy .one .social li a i{ width: 100%; height: 100%; font-size: 25px; }
+  #Footer .footer_copy .one .FooterLinks{ order: 2; padding: 18px 0; gap: 5px 0; }
+  #Footer .FooterLinks li{ font-family: "Roboto" !important; letter-spacing: unset; }
+  #Footer .FooterLinks li a{ font-family: "Roboto" !important; letter-spacing: unset;  font-size: 15px; font-weight: 400; line-height: 100%; text-transform: none; }
+  #Footer .footer_copy .one .copyright{ order: 3; margin: 0; padding:  40px 0; }
+  #Footer .footer_copy .one .copyright p{ font-family: "Roboto" !important; letter-spacing: unset;  font-size: 16px; font-weight: 500; line-height: 100%; margin: 0 auto; position: relative; padding-left: 65px; width: fit-content; }
+  #Footer .footer_copy .one .copyright p:before{ content: ""; background-image: url(/wp-content/uploads/2024/04/logo-negro4-2024-04-30.png); background-position: center; background-repeat: no-repeat; background-size: 100%; width: 49px; height: 40px; position: absolute; top: 50%; transform: translateY(-50%); left: 0; }
+
+  @media(max-width: 480px){
+
+    #Footer .FooterLinks li a{ font-size: 14px; }
+    #Footer .footer_copy .one .copyright{ padding: 7px 0 25px; }
+    #Footer .footer_copy .one .copyright p{ font-size: 14px; padding-left: 40px; }
+    #Footer .footer_copy .one .copyright p:before{ width: 30px; height: 28px; }
+  }

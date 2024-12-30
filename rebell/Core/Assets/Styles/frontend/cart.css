@@ -1,0 +1,411 @@
+/**
+ * Woocommerce Cart Styles.
+ *
+ * @package BeTheme
+ * @author  Invbit <info@invbit.com>
+ * @link    https://www.invbit.com
+ */
+
+.woocommerce-cart-form {
+  max-width  : 480px;
+  margin     : 0 auto;
+  text-align : center;
+}
+
+  .woocommerce-cart-form .QuantityBtn,
+  .woocommerce-cart-form .QuantityInput {
+    padding     : 0 !important;
+    margin      : 0 !important;
+    background  : none;
+    line-height : 0 !important;
+  }
+
+  .woocommerce-cart-form .QuantityBtn .dashicons {
+    color           : white;
+    font-size       : .8rem;
+    display         : flex;
+    justify-content : center;
+    align-items     : center;
+  }
+
+  .woocommerce-cart-form .QuantityInput {
+    border    : none !important;
+    min-width : unset !important;
+    font-size : 1.2rem !important;
+    width     : 2rem !important;
+  }
+
+  .woocommerce-cart-form tr.Props > td {
+    padding : .5rem 0 0 0 !important;
+  }
+
+.woocommerce-cart-form #ConfirmEmptyCart .modal__footer {
+  display : flex;
+}
+  .woocommerce-cart-form #ConfirmEmptyCart .modal__footer .modal__btn {
+    width          : 100%;
+    margin         : 0;
+    border-radius  : 0;
+    background     : #EFEBAE !important;
+    color          : var(--darkest-color);
+    text-transform : uppercase;
+    display        : inline-block;
+    padding        : 0.5rem;
+    font-weight    : normal !important;
+    font-size      : .8rem !important;
+    transition     : 300ms;
+  }
+    .woocommerce-cart-form #ConfirmEmptyCart .modal__footer .modal__btn:hover {
+      background : var(--primary-color) !important;
+    }
+
+
+.QuantityWrapper {
+  display         : flex;
+  justify-content : center;
+}
+
+  .products .QuantityWrapper {
+    margin : 1em 0 1.2rem 20px !important;
+  }
+
+  .QuantityWrapper .InputQuantity,
+  .QuantityWrapper .AddQuantityToCart,
+  .QuantityWrapper .SubtractQuantityToCart {
+    color         : var(--primary-color) !important;
+    background    : none !important;
+    transition    : all 100ms;
+    border-radius : 99999px !important;
+    border        : 2px solid black !important;
+    min-width     : unset !important;
+    width         : 30px !important;
+    height        : 30px !important;
+    padding       : 0 !important;
+    margin        : 0 !important;
+	background:black !important;
+  }
+
+    .QuantityWrapper .AddQuantityToCart:hover,
+    .QuantityWrapper .SubtractQuantityToCart:hover {
+      color      : black !important;
+      background : transparent !important;
+    }
+
+  .QuantityWrapper .InputQuantity {
+    font-size     : 1.2rem;
+    margin        : 0 .5rem !important;
+  }
+
+    .QuantityWrapper .InputQuantity:focus {
+      background : none !important;
+    }
+
+.woocommerce-cart .actions {
+  padding : 0;
+}
+  .woocommerce-cart .actions .ApplyCoupon {
+    display         : flex;
+    justify-content : space-between;
+    align-items     : center;
+  }
+    .woocommerce-cart .actions .ApplyCoupon > * {
+      width : 50%;
+    }
+    .woocommerce-cart .actions .ApplyCoupon > #coupon_code {
+      margin        : 0;
+      padding       : .5rem 0;
+      border        : none;
+      border-bottom : 1px solid var(--primary-color);
+    }
+      .woocommerce-cart .actions .ApplyCoupon > #coupon_code::placeholder {
+        color : gray;
+      }
+    .woocommerce-cart .actions .ApplyCoupon > a,
+    .woocommerce-cart .actions .ApplyCoupon > button {
+      color       : var(--darkest-color);
+      padding     : 0.25rem 0 !important;
+      font-weight : bold;
+    }
+      .woocommerce-cart .actions .ApplyCoupon > a:hover,
+      .woocommerce-cart .actions .ApplyCoupon > button:hover {
+        color : var(--darkest-color);
+      }
+
+.woocommerce-cart .CartAlert {
+  padding    : 0.5rem;
+  border     : 1px solid var(--primary-color);
+  background : var(--primary-darker-color);
+  color      : var(--darkest-color);
+}
+  .woocommerce-cart .CartAlert div {
+    border  : 1px dashed var(--darkest-color);
+    padding : 0.5rem;
+  }
+  .woocommerce-cart .CartAlert h4 {
+    color         : var(--darkest-color);
+    font-weight   : bold;
+    margin-bottom : .5rem;
+  }
+
+.woocommerce-cart .alert_success a,
+.woocommerce-cart .alert_success a:hover {
+  color : black;
+}
+
+.woocommerce-cart-form .Totals {
+  position : relative;
+  margin   : 1.5rem 0;
+  padding  : 0.75rem;
+}
+  .woocommerce-cart-form .Totals::before {
+    content  : '';
+    top      : 0;
+    right    : -9999999px;
+    bottom   : 0;
+    left     : -9999999px;
+    position : absolute;
+    border   : 1px solid white;
+  }
+  .woocommerce-cart-form .Totals .price {
+    font-size : 1rem;
+    color     : var(--primary-color);
+  }
+
+.woocommerce-cart-form .ProceedToCheckout {
+  display        : flex;
+  flex-direction : column;
+  align-items    : center;
+  margin         : 2rem 0;
+}
+  .woocommerce-cart-form .ProceedToCheckout a {
+    font-size      : 1rem;
+    font-weight    : bold;
+    margin-bottom  : .5rem;
+    text-transform : uppercase;
+  }
+  .woocommerce-cart-form .ProceedToCheckout #EmptyCart {
+    margin         : 0;
+    color          : var(--primary-color);
+    background     : none;
+    text-transform : uppercase;
+  }
+
+  .woocommerce-cart h1 {
+    font-size      : 30px;
+	line-height: 40px;
+    text-align     : center;
+    text-transform : uppercase;
+
+  }
+  
+  .woocommerce-cart .ui-tabs .ui-tabs-nav li a,
+  .woocommerce-cart .accordion .question .title,
+  .woocommerce-cart .faq .question .title,
+  .woocommerce-cart table th {
+    color : var(--lightest-color);
+  }
+  
+  .woocommerce-cart table.shop_table {
+    border : none;
+  }
+  
+  .woocommerce-cart table.shop_table tbody th,
+  .woocommerce-cart table.shop_table tfoot td,
+  .woocommerce-cart table.shop_table tfoot th,
+  .woocommerce-cart table.shop_table td {
+    border-color : var(--lightest-color);
+  }
+  
+  .woocommerce-cart table th,
+  .woocommerce-cart table tr td {
+    box-shadow : none;
+  }
+  
+  .woocommerce-cart table.shop_table th,
+  .woocommerce-cart table.shop_table td {
+    border-top : none !important;
+  }
+  
+  .woocommerce-cart table.shop_table .ItemHeading {
+    border-bottom : 1px solid var(--lightest-color);
+  }
+    .woocommerce-cart table.shop_table .ItemHeading .Wrapper {
+      display         : flex;
+      justify-content : space-between;
+      align-items     : center;
+      text-align      : left;
+    }
+      .woocommerce-cart table.shop_table .ItemHeading .Wrapper .ItemName {
+       color:black;
+        font-size : 1.2rem;
+      }
+  
+    .woocommerce-cart table.shop_table .ItemHeading,
+    .woocommerce-cart table.shop_table .Props .PropName,
+    .woocommerce-cart table.shop_table .Props .PropSpiciness,
+    .woocommerce-cart table.shop_table .Props .PropPrice {
+      padding-left  : 0 !important;
+      padding-right : 0 !important;
+    }
+    .woocommerce-cart table.shop_table .Props .PropName {
+      text-transform : uppercase;
+      text-align     : left;
+    }
+    .woocommerce-cart table.shop_table .Props .PropSpiciness {
+      text-align : right;
+    }
+    .woocommerce-cart table.shop_table .Props .PropPrice {
+      text-align  : right;
+  
+      font-weight : bold;
+    }
+
+.woocommerce-cart .OrderType {
+  display         : flex;
+  flex-direction  : column;
+  justify-content : center;
+  margin          : 1rem 0;
+}
+
+  .woocommerce-cart .OrderType label {
+    background     : transparent;
+    border-radius  : .7rem;
+    border         : 2px solid var(--primary-color);
+    color          : white;
+    height         : unset;
+    width          : 100%;
+    transition     : background 300ms;
+    font-size      : .8rem;
+    letter-spacing : 0;
+    padding        : .25rem;
+    margin         : 0;
+  }
+
+    .woocommerce-cart .OrderType input {
+      display : none;
+    }
+
+    .woocommerce-cart .OrderType input:checked + label,
+    .woocommerce-cart .OrderType label:hover:not(.disabled) {
+      background : var(--primary-color);
+      color      : black;
+    }
+      .woocommerce-cart .OrderType input:checked + label .Wrapper svg,
+      .woocommerce-cart .OrderType label:hover:not(.disabled) .Wrapper > * {
+        fill  : black;
+        color : black;
+      }
+
+    .woocommerce-cart .OrderType label.disabled {
+      opacity      : .75;
+      border-color : gray;
+    }
+
+  .woocommerce-cart .OrderType .Wrapper {
+    display        : flex;
+    flex-direction : column;
+    text-transform : uppercase;
+  }
+
+    .woocommerce-cart .OrderType .Wrapper svg {
+      margin-top : .75rem;
+      height     : 2rem;
+      fill       : var(--primary-color);
+    }
+
+    .woocommerce-cart .OrderType .Wrapper span {
+      margin : .5rem;
+    }
+
+  @media only screen and (min-width: 450px) {
+    .woocommerce-cart .OrderType {
+      flex-direction: row;
+    }
+  }
+
+  #OrderSchedule {
+    display        : flex;
+    flex-direction : column;
+  }
+    #OrderSchedule .SelectWrapper {
+      position : relative;
+      margin   : 0 auto;
+    }
+    
+      #OrderSchedule .SelectWrapper:after {
+        content      : "";
+        position     : absolute;
+        top          : 50%;
+        right        : 1rem;
+        transform    : translateY(-50%);
+        border-left  : 6px solid transparent;
+        border-right : 6px solid transparent;
+        border-top   : 6px solid var(--primary-color);
+      }
+      
+      #OrderSchedule .SelectWrapper select {
+        color         : var(--primary-color);
+        border        : 2px solid var(--primary-color);
+        border-radius : 1rem;
+        padding       : .5rem 2.25rem .5rem 1rem;
+        margin        : 0;
+        width         : unset;
+        text-align    : center;
+      }
+
+  @media only screen and (max-width: 768px) {
+    .woocommerce-cart table.shop_table .ItemHeading .Wrapper div.Item {
+      display     : flex;
+      align-items : center;
+      width       : 100%;
+    }
+    .woocommerce-cart table.shop_table .ItemHeading .Wrapper .RemoveItem {
+      margin-right : .5rem;
+    }
+      .woocommerce-cart table.shop_table .ItemHeading .Wrapper .RemoveItem span {
+        font-size : .9rem;
+      }
+    .woocommerce-cart table.shop_table .ItemHeading,
+    .woocommerce-cart table.shop_table .ItemHeading .Wrapper,
+    .woocommerce-cart table.shop_table .Props .PropName {
+      width : 100%;
+    }
+    .woocommerce-cart table.shop_table .Props .PropSpiciness {
+      margin-right : 1rem; 
+    }
+    .woocommerce-cart table.shop_table .Props .PropSpiciness,
+    .woocommerce-cart table.shop_table .Props .PropPrice {
+      justify-content : flex-end;
+      text-align      : right;
+    }
+    .woocommerce-cart table.shop_table_responsive tr {
+      display         : flex;
+      justify-content : space-between;
+    }
+    .woocommerce-cart table.shop_table_responsive tr td::before {
+      content : none;
+    }
+    .woocommerce-cart table.shop_table_responsive tbody th {
+      display : inherit;
+    }
+    .woocommerce-cart table.shop_table_responsive tr td {
+      display    : inline-flex;
+      text-align : right;
+    }
+  }
+
+
+.WCEmptyCart {
+  text-align : center;
+}
+  .WCEmptyCart .title {
+    text-transform : uppercase;
+    font-weight    : bold;
+    font-size      : 1.2rem;
+    color          : var(--primary-color);
+    margin-bottom  : 2rem;
+  }
+  .WCEmptyCart .button {
+    line-height : 1 !important;
+    color       : var(--darkest-color) !important;
+  }

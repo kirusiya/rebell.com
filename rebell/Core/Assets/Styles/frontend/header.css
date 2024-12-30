@@ -1,0 +1,202 @@
+/**
+ * Header Styles.
+ *
+ * @package BeTheme
+ * @author  Invbit <info@invbit.com>
+ * @link    https://www.invbit.com
+ */
+
+.shopping-cart-icon:before,
+.icon-bag-fine:before {
+  content             : "" !important;
+  background-size     : contain;
+  background-position : center;
+  background-repeat   : no-repeat;
+  width               : 25px;
+  height              : 25px;
+  display             : inline-block;
+  background          : url("/wp-content/themes/rebell/Core/Assets/Images/Icons/cart-icon.svg") !important;
+}
+
+@media only screen and (max-width: 767px) {
+  #Header {
+    min-height : auto !important;
+  }
+
+  #Top_bar:not(.is-sticky) .TopHeader #logo {
+    display : flex;
+    height  : 100px;
+  }
+}
+
+
+#TopMenu {
+  display         : flex;
+  justify-content : center;
+}
+
+#TopMenu #menu-main-menu {
+  display    : flex;
+ 
+}
+
+
+
+#Top_bar a#header_cart span {
+	background    : black !important;
+	border-radius : 50% !important;
+	color         : #d2c62e;
+	font-weight   : bold;
+	font-size     : .8rem;
+	right         : 0.25rem !important;
+	top           : 0 !important;
+	bottom        : 0 !important;
+}
+
+#Top_bar .HeaderMenu {
+  display : block;
+  width   : 100%;
+}
+
+#Top_bar.is-sticky {
+  height : unset !important;
+}
+
+#Top_bar .HeaderMenu .menu {
+  text-transform : uppercase;
+}
+
+#Top_bar .menu > li > a span {
+  padding : 0;
+}
+
+#Top_bar .menu > li > a:after {
+  content : none;
+}
+
+@media only screen and (min-width: 960px) {
+  #Top_bar .menu > li:not(:last-of-type) > a span {
+    margin : 0 .25rem !important;
+  }
+}
+
+#Top_bar .menu > li:not(:last-of-type) > a span::after {
+  content  : '|';
+  position : absolute;
+  right    : -.25rem;
+}
+
+#Top_bar .HeaderMenu .menu > li > a,
+#Top_bar .HeaderMenu .menu > li > a span {
+/* #Top_bar #menu ul li.submenu .menu-toggle { */
+/* #Top_bar .HeaderMenu { */
+  color       : var(--lightest-color);
+  line-height : unset !important;
+}
+
+@media only screen and (max-width: 767px) {
+  body:not(.woocommerce-account) #Top_bar .HeaderMenu {
+    margin-bottom : 2rem !important;
+  }
+}
+
+#Top_bar .TopHeader {
+  position        : relative;
+  display         : flex;
+  justify-content : center;
+}
+  #Top_bar:not(.is-sticky) .TopHeader {
+    margin : 2rem 0;
+  }
+
+  #Top_bar .TopHeader #header_cart {
+    position      : absolute;
+    top           : auto;
+    right         : 0;
+    bottom        : 0;
+    display       : flex;
+    align-items   : flex-end;
+    margin-bottom : 1rem;
+  }
+
+  @media only screen and (min-width: 960px) {
+    #Top_bar .TopHeader #header_cart {
+      margin-bottom : .5rem;
+    }
+  }
+
+  #Top_bar .TopHeader .logo {
+    width : auto !important;
+  }
+
+#Top_bar .HeaderMenu .woocommerce-MyAccount-navigation,
+#Top_bar .HeaderMenu .woocommerce-ProductCat-navigation {
+  float  : none;
+  width  : 100%;
+  margin : .5rem 0 0;
+}
+  #Top_bar .HeaderMenu .woocommerce-MyAccount-navigation ul,
+  #Top_bar .HeaderMenu .woocommerce-ProductCat-navigation ul {
+    display     : flex;
+    align-items : center;
+    overflow    : auto;
+  }
+    @media only screen and (min-width: 576px) {
+      #Top_bar .HeaderMenu .woocommerce-MyAccount-navigation ul,
+      #Top_bar .HeaderMenu .woocommerce-ProductCat-navigation ul {
+        justify-content : center;
+      }
+    }
+    #Top_bar .HeaderMenu .woocommerce-MyAccount-navigation ul li,
+    #Top_bar .HeaderMenu .woocommerce-ProductCat-navigation ul li {
+      display : flex;
+    }
+    #Top_bar .HeaderMenu .woocommerce-ProductCat-navigation ul li a,
+    #Top_bar .HeaderMenu .woocommerce-MyAccount-navigation ul li a {
+      display        : flex;
+      position       : relative;
+      background     : none;
+      color          : var(--lightest-color);
+      border         : 0;
+      text-transform : initial;
+      padding        : .5rem .75rem;
+     
+      line-height    : 1rem;
+    }
+    #Top_bar .HeaderMenu .woocommerce-MyAccount-navigation ul li.is-active a,
+    #Top_bar .HeaderMenu .woocommerce-ProductCat-navigation ul li.is-active a,
+    #Top_bar .HeaderMenu li.current-menu-item a span,
+    #Top_bar .HeaderMenu li.current-product_cat-ancestor a span , 
+    #Top_bar .HeaderMenu  .woocommerce-ProductCat-navigation li:hover a span{
+    color: white !important;
+    font-weight: initial !important;
+    border-bottom: 1px solid white !important;
+	font-weight:600 !important;
+    }
+    #Top_bar .HeaderMenu .woocommerce-MyAccount-navigation ul li:not(:last-of-type) > a::after,
+    #Top_bar .HeaderMenu .woocommerce-ProductCat-navigation ul li:not(:last-of-type) > a::after {
+      content     : '|';
+      position    : absolute;
+      right       : -.25rem;
+      top         : 50%;
+      transform   : translateY(-50%);
+      font-weight : normal;
+    }
+
+/**
+ * Side slide menu
+ */
+#Side_slide .extras,
+#Side_slide .social {
+  display : none;
+}
+
+#Side_slide a:not(.action_button) {
+  color          : white !important;
+  text-transform : uppercase;
+}
+
+
+
+/*** HEADER - NEW ***/
+  body.header-stack:not(.template-slider) #Header{ min-height: unset !important; }

@@ -1,0 +1,24 @@
+<?php defined( 'ABSPATH' ) or die( '¯\_(ツ)_/¯' );
+
+require_once( get_stylesheet_directory( ) . '/Core/Setup.php' );
+require_once( get_stylesheet_directory( ) . '/Core/CustomRestAPI.php' );
+require_once( get_stylesheet_directory( ) . '/Core/PushController.php' );
+require_once( get_stylesheet_directory( ) . '/Core/ExportController.php' );
+require_once( get_stylesheet_directory( ) . '/Core/CronController.php' );
+require_once( get_stylesheet_directory( ) . '/Core/Hooks/Autoload.php' );
+require_once( get_stylesheet_directory( ) . '/Core/Miscellaneous.php' );
+require_once( get_stylesheet_directory( ) . '/Core/Helpers.php' );
+require_once( get_stylesheet_directory( ) . '/Core/Constants.php' );
+require_once( get_stylesheet_directory( ) . '/Core/AdminController.php' );
+require_once( get_stylesheet_directory( ) . '/Core/WCController.php' );
+require_once( get_stylesheet_directory( ) . '/Core/WCKitchenManagerController.php' );
+require_once( get_stylesheet_directory( ) . '/Core/WCKitchenController.php' );
+require_once( get_stylesheet_directory( ) . '/Core/WCCartController.php' );
+require_once( get_stylesheet_directory( ) . '/Core/WCCheckoutController.php' );
+require_once( get_stylesheet_directory( ) . '/Core/ProductCatController.php' );
+require_once( get_stylesheet_directory( ) . '/Core/MyAccountController.php' );
+require_once( get_stylesheet_directory( ) . '/Core/ZipcodeController.php' );
+require_once( get_stylesheet_directory( ) . '/Core/LocationsController.php' );
+require_once( get_stylesheet_directory( ) . '/Core/Shortcodes.php' );
+require_once( get_stylesheet_directory( ) . '/Core/AcfController.php' );
+require_once( get_stylesheet_directory( ) . '/Core/Includes/BethemeFunctions.php' );

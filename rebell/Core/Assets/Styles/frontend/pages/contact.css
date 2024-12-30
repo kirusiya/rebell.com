@@ -1,0 +1,89 @@
+.validate_email_against_bot {
+  display: none;
+}
+
+.ContactForm,
+.woocommerce-account h3 {
+  max-width    : 480px;
+  margin-left  : auto;
+  margin-right : auto;
+  text-align   : center;
+}
+  .ContactForm br {
+    display : none;
+  }
+
+  .ContactForm input,
+  .ContactForm textarea {
+    background    : none !important;
+    color         : white;
+    border        : none;
+    border-bottom : 1px solid var(--primary-color);
+    text-align    : center;
+    font-size     : 1rem;
+    margin-bottom : 0;
+    width         : 100%;
+  }
+
+  .ContactForm textarea {
+    max-height : 6rem;
+  }
+
+  .ContactForm .politica .wpcf7-list-item {
+    margin : 0;
+  }
+    .ContactForm .politica .wpcf7-list-item label {
+      display    : flex;
+      text-align : left;
+    }
+      .ContactForm .politica .wpcf7-list-item input[type="checkbox"] {
+        width        : auto !important;
+        margin-right : 1rem;
+      }
+      .ContactForm input[type="submit"] {
+        display          : inline-block;
+        background-color : var(--primary-color) !important;
+        font-size        : 1rem;
+        color            : black;
+        padding          : 0.75rem 5rem !important;
+        border-radius    : 50px;
+        overflow         : hidden;
+        transition       : all var(--transition-speed);
+        width            : auto;
+      }
+
+.wpcf7 form .wpcf7-response-output {
+  max-width  : 480px;
+  margin     : 0 auto;
+  box-sizing : border-box;
+}
+
+  .wpcf7 form.sent .wpcf7-response-output {
+    border-color : var(--primary-color);
+  }
+
+  .wpcf7 .ajax-loader:not(.is-active) {
+    display : none;
+  }
+
+.Whatsapp {
+  margin-top : 3rem;
+  text-align : center;
+}
+
+  .Whatsapp a {
+    background      : #2EB036;
+    color           : var(--lightest-color);
+    display         : inline-flex;
+    justify-content : center;
+    align-items     : center;
+    font-size       : 2.9rem;
+    height          : 4rem;
+    width           : 4rem;
+    border-radius   : 100%;
+    transition      : all var(--transition-speed);
+  }
+    .Whatsapp a:hover {
+      color      : var(--darkest-color);
+      background : var(--primary-color);
+    }

@@ -1,0 +1,200 @@
+/**
+ * Admin Styles.
+ *
+ * @package BeTheme
+ * @author  Invbit <info@invbit.com>
+ * @link    https://www.invbit.com
+ */
+
+:root {
+  --primary-color         : #d2c62f;
+  --primary-lighter-color : #ded67b;
+  --gray                  : #c1c1c1;
+  --border-radius-lg      : 30px;
+  --square-sm             : 20px;
+  --square-lg             : 40px;
+}
+
+/**
+ ** Admin sidebar.
+ **/
+.toplevel_page_acf-options-configura-rebell img {
+  padding : 0 !important;
+  height  : 24px;
+}
+.toplevel_page_acf-options-configura-rebell .dashicons-before {
+  display         : flex;
+  justify-content : center;
+  align-items     : center;
+}
+.toplevel_page_my-kitchen .wp-menu-image img {
+  padding : 4px !important;
+}
+
+
+
+/**
+ ** Print receipts.
+ **/
+.PrintBtn {
+  font-weight     : bold;
+  text-transform  : uppercase;
+  text-decoration : none;
+  text-shadow     : none;
+  color           : white !important;
+  background      : var(--primary-color) !important;
+  border-color    : var(--primary-lighter-color) !important;
+  border-radius   : 0 !important;
+  padding         : 1rem 0 !important;
+  width           : 100%;
+  transition      : background 300ms;
+  display         : flex !important;
+  align-items     : center;
+  justify-content : center;
+}
+.PrintBtn:hover {
+  background : transparent !important;
+  color      : var(--primary-color) !important;
+}
+.PrintBtn svg {
+  height     : 2rem;
+  fill       : white;
+  transition : fill 300ms;
+}
+.PrintBtn:hover svg {
+  fill : var(--primary-color);
+}
+
+#order-type-and-schedule .list-item {
+  display        : flex;
+  flex-direction : column;
+  align-items    : center;
+  padding        : 0 1rem;
+  font-size      : 1.3rem;
+}
+
+  #order-type-and-schedule .list-item svg {
+    width : 50%;
+    color : var(--primary-color);
+  }
+
+  #order-type-and-schedule .list-item span {
+    width         : 100%;
+    padding       : 0.25rem 0.5rem;
+    text-align    : center;
+    background    : rgba( 210, 197, 47 , .1 );
+    border        : 2px dashed var(--primary-color);
+    border-radius : 0.5rem;
+  }
+
+  #order-type-and-schedule .list-item.disabled span {
+    background : rgba( 210, 210, 210, .1 );
+    border     : 2px dashed lightgray;
+  }
+
+  @media screen and (max-width: 782px) {
+    li#wp-admin-bar-site-name {
+        display: none !important;
+    }
+}
+
+.deliverTo {
+  padding       : 0.5rem;
+  background    : white;
+  color         : black;
+  border-radius : 0.25rem;
+  border        : 1px solid var(--gray);
+}
+
+.CancelOrderButton {
+  color        : #d22e2e !important;
+  border-color : #d22e2e !important;
+}
+.ProcessOrderButton {
+  color        : #777777 !important;
+  border-color : #e5e5e5 !important;
+}
+
+.CancelOrderReason::placeholder {
+  font-size   : .8rem;
+  line-height : .8rem;
+}
+
+.rider .wc-customer-search + .select2 {
+  width : 100% !important;
+}
+
+.order-status {
+  display       : -webkit-inline-box;
+  display       : inline-flex;
+  line-height   : 2.5em;
+  color         : #777;
+  background    : #e5e5e5;
+  border-radius : 4px;
+  border-bottom : 1px solid rgba(0,0,0,.05);
+  margin        : -.25em 0;
+  cursor        : inherit!important;
+  white-space   : nowrap;
+  max-width     : 100%;
+  padding       : 0.25rem 1rem;
+}
+
+.order-status.status-completed {
+  background : #c8d7e1;
+  color      : #2e4453;
+}
+
+.order-status.status-on-hold {
+  background : #f8dda7;
+  color      : #94660c;
+}
+
+.order-status.status-failed {
+  background : #eba3a3;
+  color      : #761919;
+}
+
+.order-status.status-processing {
+  background : #c6e1c6;
+  color      : #5b841b;
+}
+
+.order-status.status-pending {
+  background : var(--primary-color);
+  color      : white;
+}
+
+.order-status.status-trash {
+  background : #eba3a3;
+  color      : #761919;
+}
+
+.w-full {
+  width : 100%;
+}
+
+.text-center {
+  text-align : center;
+}
+
+.block {
+  display : block !important;
+}
+
+.mt-1\/2 {
+  margin-top : .5rem;
+}
+
+.mb-1\/2 {
+  margin-bottom : .5rem;
+}
+
+
+/**
+ *  TICKETS
+ */
+@media print {
+  .wp-admin {
+    visibility: hidden;
+  }
+}

@@ -1,0 +1,75 @@
+/**
+ * Zipcode Request Form Styles.
+ *
+ * @package BeTheme
+ * @author  Invbit <info@invbit.com>
+ * @link    https://www.invbit.com
+ */
+
+.ZipcodeRequestForm {
+  max-width  : 580px;
+  margin     : 0 auto;
+  text-align : center;
+  border     : 1px solid var(--primary-color);
+  padding    : 2rem;
+  position   : relative;
+}
+  .ZipcodeRequestForm::after {
+    content    : '';
+    position   : absolute;
+    top        : -1.4rem;
+    left       : 50%;
+    transform  : translateX(-50%);
+    color      : var(--primary-color);
+    background : url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMjIuODggMTE3LjEiPjxwYXRoIGQ9Ik02NC40MiwyLDgwLjEzLDM4LjcsMTIwLDQyLjI2YTMuMiwzLjIsMCwwLDEsMS44Miw1LjYyaDBMOTEuNjQsNzQuMThsOC45LDM5QTMuMTksMy4xOSwwLDAsMSw5OC4xMiwxMTdhMy4yNywzLjI3LDAsMCwxLTIuNDYtLjQ2TDYxLjQxLDk2LjEsMjcuMDcsMTE2LjY0YTMuMTgsMy4xOCwwLDAsMS00LjM4LTEuMDksMy4xNCwzLjE0LDAsMCwxLS4zNy0yLjM4aDBsOC45MS0zOUwxLjA5LDQ3Ljg4YTMuMjQsMy4yNCwwLDAsMS0uMzItNC41MiwzLjMyLDMuMzIsMCwwLDEsMi4yOS0xbDM5LjcyLTMuNTZMNTguNDksMmEzLjI0LDMuMjQsMCwwLDEsNS45MywwWiIgZmlsbD0iI2YwZTY0MCI+PC9wYXRoPjwvc3ZnPg==) no-repeat;
+    height     : 2.8rem;
+    width      : 2.8rem;
+  }
+
+  .ZipcodeRequestForm .Title {
+    font-size  : 1.1rem;
+    margin     : 1rem 0;
+  }
+
+    .ZipcodeRequestForm .Title strong {
+      color : var(--primary-color);
+    }
+
+  .ZipcodeRequestForm .woocommerce-form-row {
+    margin : 2rem 0;
+  }
+
+  .ZipcodeRequestForm input,
+  .ZipcodeRequestForm input:focus {
+    background     : none !important;
+    color          : white;
+    border         : none;
+    border-bottom  : 1px solid var(--primary-color);
+    text-align     : center;
+    font-size      : 1rem;
+    margin-bottom  : 0;
+    width          : 100%;
+    text-transform : uppercase;
+  }
+    .ZipcodeRequestForm label {
+      display : none !important;
+    }
+    .ZipcodeRequestForm input::placeholder{
+      color     : rgba(255,255,255,.75);
+      font-size : 1rem;
+    }
+
+    .ZipcodeRequestForm .woocommerce-button {
+      margin-top    : 1rem;
+      margin-bottom : 0;
+    }
+
+.ZipcodeForm__Footer p {
+  color          : #000000;
+  font-weight    : bold;
+  text-transform : uppercase;
+  margin         : 0;
+}
+.AppStoreIcon img {
+  height : 70px !important;
+}

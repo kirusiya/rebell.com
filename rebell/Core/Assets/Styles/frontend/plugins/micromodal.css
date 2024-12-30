@@ -1,0 +1,176 @@
+/**
+ * Micromodal Component Styles.
+ *
+ * @package BeTheme
+ * @author  Invbit <info@invbit.com>
+ * @link    https : //www.invbit.com
+ */
+
+.modal {
+  position : fixed;
+  z-index  : 9999;
+}
+
+.modal__overlay {
+  position        : fixed;
+  top             : 0;
+  left            : 0;
+  right           : 0;
+  bottom          : 0;
+  background      : rgba(0,0,0,.6);
+  display         : flex;
+  justify-content : center;
+  align-items     : center;
+}
+
+.modal__container {
+  background-color : var(--darkest-color);
+  max-width        : 480px;
+  max-height       : 100vh;
+  border-radius    : 0;
+  overflow-y       : auto;
+  box-sizing       : border-box;
+}
+
+.modal__header,
+.modal__content .modal__address,
+.modal__content .modal__description {
+  padding : .5rem 1.5rem;
+}
+
+.modal__header {
+  display         : flex;
+  justify-content : center;
+  align-items     : center;
+  background      : var(--primary-color);
+}
+  .modal__title {
+    margin-top    : 0;
+    margin-bottom : 0;
+    font-size     : 1.25rem;
+    line-height   : 1;
+    color         : var(--darkest-color);
+    box-sizing    : border-box;
+  }
+
+.modal__content {
+  line-height : 1;
+  color       : var(--lightest-color);
+}
+  .modal__content .modal__address {
+    background : #837A1A;
+    text-align : center;
+  }
+  .modal__content .modal__description {
+    padding    : 1rem 1.5rem;
+    text-align : center;
+  }
+    .modal__content .modal__description p {
+      margin-bottom : .5rem;
+    }
+
+button.modal__btn {
+  width          : 100%;
+  margin         : 0;
+  border-radius  : 0;
+  background     : #EFEBAE !important;
+  color          : var(--darkest-color);
+  text-transform : uppercase;
+  transition     : 300ms;
+}
+  button.modal__btn:hover {
+    background : var(--primary-color) !important;
+  }
+
+
+#ProductModal {
+  position : fixed;
+  z-index  : 9999;
+}
+
+#ProductModal :not(#ExtrasValidation_Modal) > .modal__container {
+  background-color : #fff;
+  max-width        : 768px;
+  max-height       : 100vh;
+  border-radius    : .5rem;
+  overflow-y       : auto;
+  box-sizing       : border-box;
+}
+
+#ProductModal :not(#ExtrasValidation_Modal) > .modal__header {
+  padding         : 0;
+  background      : transparent;
+}
+  #ProductModal :not(#ExtrasValidation_Modal) > .modal__image {
+    height : 100%;
+    width  : 100%;
+  }
+
+#ProductModal :not(#ExtrasValidation_Modal) > .modal__content {
+  line-height : 1;
+  color       : var(--lightest-color);
+}
+
+#ProductModal :not(#ExtrasValidation_Modal) > .modal__close {
+  border     : 0;
+  position   : absolute;
+  top        : .5rem;
+  right      : .5rem;
+  z-index    : 99;
+  background : transparent;
+  padding    : 0 !important;
+  margin     : 0;
+}
+
+
+/**************************\
+  Demo Animation Style
+\**************************/
+@keyframes mmfadeIn {
+    from { opacity: 0; }
+      to { opacity: 1; }
+}
+
+@keyframes mmfadeOut {
+    from { opacity: 1; }
+      to { opacity: 0; }
+}
+
+@keyframes mmslideIn {
+  from { transform: translateY(15%); }
+    to { transform: translateY(0); }
+}
+
+@keyframes mmslideOut {
+    from { transform: translateY(0); }
+    to { transform: translateY(-10%); }
+}
+
+.micromodal-slide {
+  display : none;
+}
+
+.micromodal-slide.is-open {
+  display : block;
+}
+
+.micromodal-slide[aria-hidden="false"] .modal__overlay {
+  animation : mmfadeIn .3s cubic-bezier(0.0, 0.0, 0.2, 1);
+}
+
+.micromodal-slide[aria-hidden="false"] .modal__container {
+  animation : mmslideIn .3s cubic-bezier(0, 0, .2, 1);
+}
+
+.micromodal-slide[aria-hidden="true"] .modal__overlay {
+  animation : mmfadeOut .3s cubic-bezier(0.0, 0.0, 0.2, 1);
+}
+
+.micromodal-slide[aria-hidden="true"] .modal__container {
+  animation : mmslideOut .3s cubic-bezier(0, 0, .2, 1);
+}
+
+.micromodal-slide .modal__container,
+.micromodal-slide .modal__overlay {
+  will-change : transform;
+}

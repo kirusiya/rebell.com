@@ -1,0 +1,39 @@
+/**
+ * Locations Page Styles.
+ *
+ * @package BeTheme
+ * @author  Invbit <info@invbit.com>
+ * @link    https://www.invbit.com
+ */
+
+.Locations {
+  margin : 2rem 0 0 !important;
+}
+  .Locations .Location__Button {
+    width          : 100%;
+    padding        : .5rem .25rem !important;
+    margin-bottom  : .5rem;
+    border         : 1px solid var(--primary-color);
+    border-radius  : 0;
+    background     : none;
+    color          : var(--lightest-color);
+    font-size      : 1rem;
+    text-transform : uppercase;
+    transition     : all var(--transition-speed);
+    overflow       : unset;
+  }
+    .Locations .Location__Button .currentIcon {
+      position      : absolute;
+      background    : var(--darkest-color);
+      color         : var(--primary-color);
+      border-radius : 9999px;
+      padding       : .1rem;
+      height        : 1rem;
+      top           : 0;
+      left          : 100%;
+      transform     : translate(-50%,-50%);
+    }
+    .Locations .Location__Button:hover {
+      color      : var(--darkest-color);
+      background : var(--primary-color);
+    }

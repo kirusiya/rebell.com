@@ -1,0 +1,346 @@
+/**
+ * My Account page Styles.
+ *
+ * @package BeTheme
+ * @author  Invbit <info@invbit.com>
+ * @link    https://www.invbit.com
+ */
+
+.MyAccountLanding,
+.WCAccountForm,
+.WCAccountOrders,
+.WCAccountOrder {
+  max-width  : 480px;
+  margin     : 0 auto;
+  text-align : center;
+}
+  .MyAccountLanding .Title,
+  .WCAccountForm .Title {
+    color          : var(--primary-color);
+    text-transform : uppercase;
+    font-weight    : bold;
+  }
+  .MyAccountLanding .Description {
+    margin : 2rem 0;
+  }
+
+  .WCAccountForm input,
+  .WCAccountForm input:focus {
+    background    : none !important;
+    color         : white;
+    border        : none;
+    border-bottom : 1px solid var(--primary-color);
+    text-align    : center;
+    font-size     : 1rem;
+    margin-bottom : 0;
+    width         : 100%;
+  }
+    .WCAccountForm label {
+      display : none !important;
+    }
+    .WCAccountForm input::placeholder{
+      color     : rgba(255,255,255,.75);
+      font-size : 1rem;
+    }
+
+.woocommerce-password-strength {
+  border        : none;
+  margin-top    : 0.5rem;
+  line-height   : 1.2rem;
+  padding       : 1rem;
+  border-radius : 0.25rem;
+  transition    : all var(--transition-speed);
+}
+  .woocommerce-password-strength.strong {
+    background-color : #5fef41;
+    color            : #16450c;
+  }
+  .woocommerce-password-strength.good {
+    background-color : #efc641;
+    color            : #59470b;
+  }
+  .woocommerce-password-strength.bad,
+  .woocommerce-password-strength.short {
+    background-color : #ef6741;
+    color            : #4d1b0d;
+  }
+
+  .woocommerce-password-hint {
+    line-height : 1.2rem;
+    margin-top  : 1rem;
+    color       : lightgray;
+  }
+
+.ModifyPasswordBtn {
+  background    : none !important;
+  color         : white;
+  border        : none;
+  border-bottom : 1px solid var(--primary-color);
+  text-align    : center;
+  font-size     : 1rem;
+  margin-bottom : 0;
+  width         : 100%;
+  padding       : 10px;
+  display       : block;
+  box-sizing    : border-box;
+  transition    : all var(--transition-speed);
+}
+  .ModifyPasswordBtn:hover {
+    text-decoration : none;
+  }
+
+
+.FieldErrorMessage {
+  padding       : .25rem .5rem;
+  display       : block;
+  background    : #db3435;
+  margin-top    : .25rem;
+  border-radius : .25rem;
+}
+
+.woocommerce-account h3 {
+  color          : var(--primary-color);
+  text-transform : uppercase;
+  font-weight    : bold;
+}
+
+
+/**
+ * My Orders
+ */
+.WCAccountOrders .OrderResume,
+.WCAccountOrder .OrderResume,
+.WCAccountOrder .OrderShipping {
+  font-size: 1rem;
+  margin-bottom: 1.5rem;
+}
+  .WCAccountOrders .OrderResume header,
+  .WCAccountOrders .OrderResume footer,
+  .WCAccountOrder .OrderResume header,
+  .WCAccountOrder .OrderResume footer,
+  .WCAccountOrder .OrderShipping header,
+  .WCAccountOrder .OrderShipping footer {
+    text-align: center;
+    border: 1px solid var(--primary-color);
+  }
+
+  .WCAccountOrders .OrderResume header,
+  .WCAccountOrder .OrderResume header,
+  .WCAccountOrder .OrderShipping header {
+    background: var(--primary-color);
+    color: var(--darkest-color);
+    padding: .5rem;
+  }
+    .WCAccountOrders .OrderResume header,
+    .WCAccountOrders .OrderResume header a,
+    .WCAccountOrder .OrderResume header,
+    .WCAccountOrder .OrderResume header a,
+    .WCAccountOrder .OrderShipping header,
+    .WCAccountOrder .OrderShipping header a {
+      font-weight: bold;
+      font-size: 1.25rem;
+      color: var(--darkest-color);
+    }
+
+  .WCAccountOrders .OrderResume main {
+    color: white;
+    padding: .5rem;
+    border-left: 1px solid var(--primary-color);
+    border-right: 1px solid var(--primary-color);
+  }
+
+    .WCAccountOrders .OrderResume main ul {
+      list-style: none;
+      margin: .5rem;
+    }
+
+      .WCAccountOrders .OrderResume main ul li {
+        margin: .5rem 0;
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        flex-direction: column;
+      }
+        .WCAccountOrders .OrderResume main ul li :last-child,
+        .WCAccountOrders .OrderResume .Status :last-child {
+          font-weight: bold;
+        }
+
+  .WCAccountOrders .OrderResume .Status {
+    border-left: 1px solid var(--primary-color);
+    border-right: 1px solid var(--primary-color);
+    background: var(--primary-color);
+    color: var(--darkest-color);
+    font-weight: bold;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    flex-direction: column;
+    padding: .5rem 1rem;
+  }
+    .WCAccountOrders .OrderResume .Status.completed {
+      background: #00D26D;
+    }
+    .WCAccountOrders .OrderResume .Status.cancelled {
+      background: #f04040;
+      color: white;
+    }
+  
+  .WCAccountOrders .OrderResume footer {
+    border-top: none;
+    background: var(--darkest-color);
+    color: var(--primary-color);
+    text-transform: uppercase;
+    font-size: 1rem;
+    padding: .75rem;
+  }
+    .WCAccountOrders .OrderResume footer a {
+      color: var(--primary-color);
+    }
+
+.WCAccountOrders .woocommerce-pagination {
+  display: flex;
+  justify-content: center;
+}
+  .WCAccountOrders .woocommerce-pagination .previous {
+    text-align: left;
+  }
+  .WCAccountOrders .woocommerce-pagination .next {
+    text-align: right;
+  }
+
+@media screen and (min-width: 480px) {
+  .WCAccountOrders .OrderResume main ul li,
+  .WCAccountOrders .OrderResume .Status {
+    flex-direction: row;
+  }
+}
+
+
+.WCAccountOrder .OrderResume main,
+.WCAccountOrder .OrderShipping main {
+  color: white;
+  padding: .5rem .5rem 0;
+  border: 1px solid var(--primary-color);
+}
+
+  .WCAccountOrder .OrderResume main ul,
+  .WCAccountOrder .OrderShipping main ul {
+    list-style: none;
+    margin: .5rem;
+  }
+
+    .WCAccountOrder .OrderResume main ul li,
+    .WCAccountOrder .OrderShipping main ul li {
+      margin: .75rem 0;
+      padding-bottom: .75rem;
+    }
+      .WCAccountOrder .OrderResume main ul li:not(:last-child) {
+        border-bottom: 1px solid var(--primary-color);
+      }
+      .WCAccountOrder .OrderResume main ul li .item {
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        flex-direction: column;
+      }
+        .WCAccountOrder .OrderResume main ul li .item .qty,
+        .WCAccountOrder .OrderResume main ul li .item .price {
+          color: var(--primary-color);
+        }
+        .WCAccountOrder .OrderResume main ul li .additional-ingredients {
+          margin-top: .5rem;
+          display: block;
+          border-left: 1px solid var(--primary-color);
+          padding-left: 0.5rem;
+          text-align: left;
+        }
+
+  @media screen and (min-width: 480px) {
+    .WCAccountOrder .OrderResume main ul li .item {
+      flex-direction: row;
+    }
+  }
+
+  .WCAccountOrder .OrderTotal {
+    position: relative;
+    margin-bottom: 1.5rem;
+    padding: 0.5rem;
+  }
+    .WCAccountOrder .OrderTotal::before {
+      content: '';
+      top: 0;
+      right: -9999999px;
+      bottom: 0;
+      left: -9999999px;
+      position: absolute;
+      border: 1px solid var(--primary-color);
+    }
+    .WCAccountOrder .OrderTotal .total {
+      font-size: 1rem;
+      color: var(--primary-color);
+    }
+
+  .WCAccountOrder .OrderShipping main ul li {
+    display: flex;
+    flex-direction: column;
+  }
+    .WCAccountOrder .OrderShipping main ul li .value {
+      color: var(--primary-color);
+    }
+
+
+/**
+ * My Coupons
+ */
+.MyAccount.cupones .CustomContent p {
+  text-align: center;
+}
+.WCAccountCoupons {
+  text-align : center;
+}
+  .WCAccountCoupons .empty img {
+    margin: 1.5rem 0;
+  }
+  .WCAccountCoupons .coupons-list {
+    list-style: none;
+    margin: 0;
+  }
+    .WCAccountCoupons .coupons-list li {
+      display: flex;
+      justify-content: space-between;
+      flex-direction: column;
+      color: white;
+      margin-bottom: 1rem;
+    }
+    .WCAccountCoupons .coupons-list li > * {
+      padding: .2rem 1rem;
+      border: 1px solid var(--primary-color);
+    }
+    .WCAccountCoupons .coupons-list li .name {
+      flex: 1;
+      margin-right: 0;
+    }
+    .WCAccountCoupons .coupons-list li button.apply {
+      background: none;
+      border-radius: 0;
+      margin: 0;
+      width: 100%;
+    }
+    .WCAccountCoupons .coupons-list li button.apply:disabled {
+      background: var(--primary-color) !important;
+      color: var(--darkest-color);
+      cursor: default;
+    }
+
+@media screen and (min-width: 480px) {
+  .WCAccountCoupons .coupons-list li {
+    flex-direction: row;
+  }
+  .WCAccountCoupons .coupons-list li .name {
+    margin-right: .5rem;
+  }
+  .WCAccountCoupons .coupons-list li button.apply {
+    width: 7rem;
+  }
+}

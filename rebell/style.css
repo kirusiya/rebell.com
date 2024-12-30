@@ -1,0 +1,82 @@
+/*
+Theme Name: Rebell v2.1
+Theme URI: https://themes.muffingroup.com/betheme
+Author: Invbit
+Author URI: https://invbit.com
+Description: RebellHomeburger V2.1 theme. Adds the Ecommerce website.
+Template: betheme
+Version: 1.6.2
+*/
+
+
+/*** GENERAL ***/
+
+	html{ scroll-behavior: smooth; }
+	.validate_email_against_bot { display: none; }
+
+	#pojo-a11y-toolbar .pojo-a11y-toolbar-overlay p.pojo-a11y-toolbar-title { line-height: 1.2; }
+
+	body.keyboard-support.page [role=link]:focus, body.keyboard-support.page a:focus, body.keyboard-support.page button:focus, body.keyboard-support.archive [role=link]:focus, body.keyboard-support.archive a:focus, body.keyboard-support.archive button:focus, 
+	    body.keyboard-support.single [role=link]:focus, body.keyboard-support.single a:focus, body.keyboard-support.single button:focus { outline: unset !important; }
+
+	body.mobile-side-slide{ overflow-x: hidden !important; }
+
+	:root{
+        --negro: #000000;
+        --blanco: #FFFFFF;
+        --blanco-fondo: #f0f0f0;
+        --amarillo: #f1e94c;
+
+        --containerWidth: 1220px;
+        --halfSection: 610px;
+
+        --pad-100: 100px 0px;
+        --100: 100px;
+        --40: 40px;
+
+        scrollbar-color: var(--negro) var(--blanco-fondo);
+        scrollbar-width: thin;
+    }
+
+    ::-webkit-scrollbar { width: 8px; background-color: var(--blanco-fondo); }
+    ::-webkit-scrollbar-track { background-color: var(--blanco-fondo); }
+    ::-webkit-scrollbar-thumb { border-radius: 10px; background-color: var(--negro); }
+    ::-webkit-scrollbar-thumb:hover { background-color: var(--blanco-fondo); }
+
+    .pad-100{ padding: var(--pad-100); }
+    .pad-100-top{ padding-top: var(--100); }
+    .pad-100-bottom{ padding-bottom: var(--100); }
+    .pad-40-bottom{ padding-bottom: var(--40); }
+
+  
+
+
+  
+
+
+/*** FOOTER ***/
+
+	#Footer { background : var(--negro); }
+	#Footer:before{ content: ""; height: 80px; width: 100%; background-color: var(--blanco-fondo); position: absolute; top: 0; left: 0; visibility: visible; }
+	#Footer .footer_copy{ border-top: unset !important; }
+	#Footer .footer_copy .one{ min-height: unset !important; padding: 0px; margin: 0px; width: 100%; display: flex; flex-direction: column; }
+	#Footer .footer_copy .one .social{ background-color: var(--blanco-fondo); order: 1; padding: 18px 0; }
+	#Footer .footer_copy .one .social li{ width: 44px; height: 44px; }
+	#Footer .footer_copy .one .social li a i{ width: 100%; height: 100%; font-size: 25px; }
+	#Footer .footer_copy .one .FooterLinks{ order: 2; padding: 18px 0; gap: 5px 0; }
+	#Footer .FooterLinks li{ font-family: "Roboto" !important; letter-spacing: unset; }
+	#Footer .FooterLinks li a{ font-family: "Roboto" !important; letter-spacing: unset; color: var(--blanco); font-size: 16px; font-weight: 500; line-height: 100%; text-transform: none; }
+	#Footer .footer_copy .one .copyright{ order: 3; margin: 0; padding: 20px 0 40px; }
+	#Footer .footer_copy .one .copyright p{ font-family: "Roboto" !important; letter-spacing: unset; color: var(--blanco); font-size: 16px; font-weight: 500; line-height: 100%; margin: 0 auto; position: relative; padding-left: 65px; width: fit-content; }
+	#Footer .footer_copy .one .copyright p:before{ content: ""; background-image: url(/wp-content/themes/rebell/Core/Assets/Images/Cuernos.png); background-position: center; background-repeat: no-repeat; background-size: 100%; width: 49px; height: 40px; position: absolute; top: 50%; transform: translateY(-50%); left: 0; }
+
+	@media(max-width: 480px){
+
+		#Footer .FooterLinks li a{ font-size: 14px; }
+		#Footer .footer_copy .one .copyright{ padding: 7px 0 25px; }
+		#Footer .footer_copy .one .copyright p{ font-size: 14px; padding-left: 40px; }
+		#Footer .footer_copy .one .copyright p:before{ width: 30px; height: 28px; }
+	}
+	
+	
+

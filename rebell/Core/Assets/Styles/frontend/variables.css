@@ -1,0 +1,47 @@
+/**
+ * Variables.
+ *
+ * @package BeTheme
+ * @author  Invbit <info@invbit.com>
+ * @link    https://www.invbit.com
+ */
+
+:root {
+  --primary-color         : #f0e640;
+  --primary-lighter-color : #fbf368;
+  --primary-darker-color  : #ddd42a;
+  --lightest-color        : #ffffff;
+  --darkest-color         : #000000;
+  --gray                  : #c1c1c1;
+  --border-radius-lg      : 30px;
+  --square-sm             : 20px;
+  --square-lg             : 40px;
+  --transition-speed      : 300ms;
+}
+
+:root{
+  --negro: #000000;
+  --blanco: #FFFFFF;
+  --blanco-fondo: #f0f0f0;
+  --amarillo: #f1e94c;
+
+  --containerWidth: 1220px;
+  --halfSection: 610px;
+
+  --pad-100: 100px 0px;
+  --100: 100px;
+  --40: 40px;
+
+  scrollbar-color: var(--negro) var(--blanco-fondo);
+  scrollbar-width: thin;
+}
+
+::-webkit-scrollbar { width: 8px; background-color: var(--blanco-fondo); }
+::-webkit-scrollbar-track { background-color: var(--blanco-fondo); }
+::-webkit-scrollbar-thumb { border-radius: 10px; background-color: var(--negro); }
+::-webkit-scrollbar-thumb:hover { background-color: var(--blanco-fondo); }
+
+.pad-100{ padding: var(--pad-100); }
+.pad-100-top{ padding-top: var(--100); }
+.pad-100-bottom{ padding-bottom: var(--100); }
+.pad-40-bottom{ padding-bottom: var(--40); }

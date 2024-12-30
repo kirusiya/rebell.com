@@ -1,0 +1,45 @@
+/**
+ * Admin My Kitchen Styles.
+ *
+ * @author  Invbit <info@invbit.com>
+ * @link    https://www.invbit.com
+ */
+
+#MyKitchen {
+  margin-right: 1.5rem;
+}
+
+#MyKitchenConfig {
+  position      : relative;
+  min-width     : 255px;
+  border        : 1px solid #ccd0d4;
+  box-shadow    : 0 1px 1px rgba(0,0,0,.04);
+  background    : #fff;
+  margin-bottom : 20px;
+  line-height   : 1;
+}
+  #MyKitchenConfig .title {
+    display       : flex;
+    font-size     : 14px;
+    padding       : 8px 12px;
+    margin        : 0;
+    line-height   : 1.4;
+    border-bottom : 1px solid #ccd0d4;
+  }
+  #MyKitchenConfig .title .toggler {
+    margin-left : auto;
+    border      : 0;
+    background  : 0 0;
+    cursor      : pointer;
+  }
+  #MyKitchenConfig .inside {
+    margin      : 11px 0;
+    position    : relative;
+    padding     : 0 12px 12px;
+    line-height : 1.4;
+    font-size   : 13px;
+  }
+
+.m-0 {
+  margin : 0;
+}
