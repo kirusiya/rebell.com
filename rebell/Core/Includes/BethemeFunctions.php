@@ -239,3 +239,38 @@ function add_stylesheet_to_head() {
 }
     
 add_action( 'wp_head', 'add_stylesheet_to_head' );
+
+
+/* ---------------------------------------------------------------------------
+ * modal footer codigo zip
+ * --------------------------------------------------------------------------- */
+
+function modal_codigo_postal() {
+	
+	?>
+	<div class="modal micromodal-slide" aria-hidden="true" id="codigoZip">
+		<div class="modal__overlay" tabindex="-1" data-micromodal-close>
+			<div class="modal__container" role="dialog" aria-modal="true" aria-labelledby="modal-1-title">
+				<header class="modal__header">
+					<h2 class="modal__title">Código Zip</h2>
+					<button class="modal__close" data-close-modal aria-label="Close modal" data-micromodal-close><span class="dashicons dashicons-no"></span></button>
+				</header>
+				<main class="modal__content" id="codigoZipContent">
+
+					<?php
+					echo do_shortcode('[postcode-request title="Dino cúal es tu código postal para realizar tu pedido"]'); 	
+					?>
+
+				</main>
+				<footer class="modal__footer"></footer>
+			</div>
+		</div>
+	</div>
+	
+	<?php
+		
+		
+}
+add_action( 'wp_footer', 'modal_codigo_postal' );
+
+

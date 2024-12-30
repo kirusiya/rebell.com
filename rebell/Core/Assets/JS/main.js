@@ -38,6 +38,55 @@
       event.preventDefault();
       MicroModal.close('ProductModal')
     } );
+
+
+
+    $( document ).on( 'click', '[data-open-modal]', function( event ) {
+      event.preventDefault();
+
+      const productID = $( this ).data( 'open-modal' );
+
+      $('.loadingIcon').removeClass('opacity-0');
+
+      $.ajax({
+        url: '/wp-admin/admin-ajax.php',
+        type: 'GET',
+        data: {
+            action: 'get_product_modal_content',
+            product_id: productID
+        },
+        success: function (response) {
+            $('#ProductModalHeader').html(response.header);
+            $('#ProductModalContent').html(response.content);
+            MicroModal.show('ProductModal')
+            $('.loadingIcon').addClass('opacity-0');
+        },
+        error: function () {
+            console.error('Error al cargar el contenido del producto.');
+            $('.loadingIcon').addClass('opacity-0');
+        }
+      });
+    } );
+
+    $( document ).on( 'click', '[data-close-modal]', function( event ) {
+      console.log('dale')
+      event.preventDefault();
+      MicroModal.close('ProductModal')
+    } );
+
+
+
+    /*codigo para el modal del codigo ZIP*/
+
+    $( 'a.zipPopup' ).on( 'click', function( event ) {
+      event.preventDefault();
+      //$('.loadingIcon').removeClass('opacity-0');
+      MicroModal.show('codigoZip')
+      
+    } );
+
+    /*codigo para el modal del codigo ZIP*/
+
   }
 
   /**
