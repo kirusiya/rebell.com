@@ -40,52 +40,7 @@
     } );
 
 
-
-    $( document ).on( 'click', '[data-open-modal]', function( event ) {
-      event.preventDefault();
-
-      const productID = $( this ).data( 'open-modal' );
-
-      $('.loadingIcon').removeClass('opacity-0');
-
-      $.ajax({
-        url: '/wp-admin/admin-ajax.php',
-        type: 'GET',
-        data: {
-            action: 'get_product_modal_content',
-            product_id: productID
-        },
-        success: function (response) {
-            $('#ProductModalHeader').html(response.header);
-            $('#ProductModalContent').html(response.content);
-            MicroModal.show('ProductModal')
-            $('.loadingIcon').addClass('opacity-0');
-        },
-        error: function () {
-            console.error('Error al cargar el contenido del producto.');
-            $('.loadingIcon').addClass('opacity-0');
-        }
-      });
-    } );
-
-    $( document ).on( 'click', '[data-close-modal]', function( event ) {
-      console.log('dale')
-      event.preventDefault();
-      MicroModal.close('ProductModal')
-    } );
-
-
-
-    /*codigo para el modal del codigo ZIP*/
-
-    $( 'a.zipPopup' ).on( 'click', function( event ) {
-      event.preventDefault();
-      //$('.loadingIcon').removeClass('opacity-0');
-      MicroModal.show('codigoZip')
-      
-    } );
-
-    /*codigo para el modal del codigo ZIP*/
+    
 
   }
 
@@ -522,5 +477,165 @@
       evt.currentTarget.submit();
     } );
   }
+
+  /*modal codigo zip en lugar de pagina - Invbit*/
+  $(document).ready(function() {
+    // Asegurarse de que MicroModal esté disponible
+    if (typeof MicroModal === 'undefined') {
+      console.error('MicroModal no está cargado');
+      return;
+    }else{
+      console.log('micromodal cargado')
+    }
+
+    // Inicializar MicroModal
+    MicroModal.init();
+
+    // Agregar el evento click a los enlaces con la clase zipPopup
+    $(document).on('click', 'a.zipPopup', function(event) {
+      event.preventDefault();
+      MicroModal.show('codigoZip');
+    });
+
+    // Agregar el evento menu header con la clase zipPopup
+    $(document).on('click', '.zipPopup.menu-item a', function(event) {
+      event.preventDefault();
+      MicroModal.show('codigoZip');
+    });
+
+  });
+  /*modal codigo zip en lugar de pagina - Invbit*/
+
+  /*codigo para enviar el codigo postal via ajax y jquery - invbit*/
+  $('.ZipcodeRequestForm').on('submit', function(e) {
+    e.preventDefault();
+    var form = $(this);
+    var submitButton = form.find('button[type="submit"]');
+    var formData = form.serialize();
+
+    $('.loadingIcon').removeClass('opacity-0');
+
+    $.ajax({
+      url: '/wp-admin/admin-ajax.php',
+      type: 'POST',
+      data: formData + '&action=handle_save_zipcode_ajax',
+      beforeSend: function() {
+        submitButton.prop('disabled', true);
+      },
+      success: function(response) {
+        if (response.success) {
+          MicroModal.close('codigoZip');
+          window.location.href = response.data.redirect;
+        } else {
+          $('.woocommerce-notices-wrapper').html(response.data.notices);
+        }
+      },
+      error: function() {
+        $('.woocommerce-notices-wrapper').html('<ul class="woocommerce-error" role="alert"><li>Ha ocurrido un error. Por favor, inténtalo de nuevo.</li></ul>');
+      },
+      complete: function() {
+        submitButton.prop('disabled', false);
+        $('.loadingIcon').addClass('opacity-0');
+      }
+    });
+  });
+  /*codigo para enviar el codigo postal via ajax y jquery - invbit*/
+
+
+  /**/
+  $('.LoginForm').on('submit', function(e) {
+    e.preventDefault();
+    var form = $(this);
+    var submitButton = form.find('button[type="submit"]');
+    var formData = form.serialize();
+
+    $('.loadingIcon').removeClass('opacity-0');
+
+    $.ajax({
+        url: '/wp-admin/admin-ajax.php',
+        type: 'POST',
+        data: formData + '&action=handle_login_ajax',
+        beforeSend: function() {
+            submitButton.prop('disabled', true);
+        },
+        success: function(response) {
+            if (response.success) {
+                // Cerrar el modal de inicio de sesión
+                MicroModal.close('loginModal');
+                
+                // Mostrar SweetAlert personalizado
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Inicio de sesión correcto',
+                    toast: true,
+                    position: 'top',
+                    showConfirmButton: false,
+                    timer: 3000,
+                    timerProgressBar: true,
+                    didOpen: (toast) => {
+                        toast.addEventListener('mouseenter', Swal.stopTimer);
+                        toast.addEventListener('mouseleave', Swal.resumeTimer);
+                        const swalContainer = document.querySelector('.swal2-container');
+                        if (swalContainer) {
+                            swalContainer.style.overflow = 'hidden';
+                            swalContainer.style.animation = 'none';
+                            swalContainer.offsetHeight; // Forzar un reflow
+                            swalContainer.style.animation = 'customSlideInDown 0.5s forwards';
+                        }
+                        const progressBar = toast.querySelector('.swal2-timer-progress-bar');
+                        if (progressBar) {
+                            progressBar.style.transform = 'scaleX(0)';
+                            progressBar.style.transformOrigin = 'center';
+                            setTimeout(() => {
+                                progressBar.style.transition = 'transform 3s linear';
+                                progressBar.style.transform = 'scaleX(1)';
+                            }, 100);
+                        }
+                    },
+                    willClose: () => {
+                        return new Promise(resolve => {
+                            const swalContainer = document.querySelector('.swal2-container');
+                            if (swalContainer) {
+                                swalContainer.style.animation = 'customSlideOutUp 1s forwards';
+                            }
+                            setTimeout(resolve, 1000);
+                        });
+                    },
+                    customClass: {
+                        popup: 'swal-custom-popup',
+                        icon: 'swal-custom-icon',
+                        title: 'swal-custom-title'
+                    },
+                    showClass: {
+                        popup: 'swal-custom-animate-success swal-custom-animate-show'
+                    },
+                    hideClass: {
+                        popup: 'swal-custom-animate-success swal-custom-animate-hide'
+                    }
+                }).then(() => {
+                    setTimeout(() => {
+                        location.reload();
+                    }, 1000); // Retraso para permitir que la animación de salida se complete
+                });
+            } else {
+                $('.woocommerce-notices-wrapper', form).html(response.data.notices);
+            }
+        },
+        error: function() {
+            $('.woocommerce-notices-wrapper', form).html('<ul class="woocommerce-error" role="alert"><li>Ha ocurrido un error. Por favor, inténtalo de nuevo.</li></ul>');
+        },
+        complete: function() {
+            submitButton.prop('disabled', false);
+            $('.loadingIcon').addClass('opacity-0');
+        }
+    });
+  });
+
+  // Mostrar el modal de login cuando se hace clic en el enlace
+  $('a.userLogin').on('click', function(e) {
+      e.preventDefault();
+      MicroModal.show('loginModal');
+  });
+  /**/
 
 } )( jQuery );

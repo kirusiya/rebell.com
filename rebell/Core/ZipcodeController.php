@@ -88,7 +88,9 @@ if ( ! class_exists( __NAMESPACE__ .'\ZipcodeController' ) ) {
 
             <form method="post" class="ZipcodeRequestForm woocommerce-form">
 
-                <?php wc_print_notices( ); ?>
+                <div class="woocommerce-notices-wrapper">
+                    <?php wc_print_notices(); ?>
+                </div>
 
                 <p class="Title"><?= $title ?></p>
 
@@ -97,7 +99,7 @@ if ( ! class_exists( __NAMESPACE__ .'\ZipcodeController' ) ) {
                         <?php esc_html_e( 'Postcode', 'woocommerce' ); ?>&nbsp;<span class="required">*</span>
                     </label>
                     <input
-                        placeholder="<?php esc_html_e( 'Postcode', 'woocommerce' ); ?>"
+                        placeholder="<?php esc_html_e( 'Código Postal', 'woocommerce' ); ?>"
                         type="number"
                         class="woocommerce-Input woocommerce-Input--text input-text"
                         name="zipcode"
@@ -127,47 +129,62 @@ if ( ! class_exists( __NAMESPACE__ .'\ZipcodeController' ) ) {
         /**
          * Save the postcode
          */
-        public function handleSaveZipcode( ) {
-
-            $nonce_value = isset( $_POST['_wpnonce'] ) ? wp_unslash( $_POST['_wpnonce'] ) : '';
-            $nonce_value = isset( $_POST['update-zipcode-nonce'] ) ? wp_unslash( $_POST['update-zipcode-nonce'] ) : $nonce_value;
-
-            if ( ! isset( $_POST['update_zipcode'], $_POST['zipcode'] ) or ! wp_verify_nonce( $nonce_value, 'update-zipcode' ) ) {
-                return;
-            }
-
-            $zipcode = sanitize_text_field( $_POST['zipcode'] ?? null );
-
-            try {
-                Helpers::getKitchenByZipcode( $zipcode );
-            } catch( \Exception $e ) {
-                $msg = $e->getMessage( );
-                wc_add_notice( "<div style='text-align:left'>$msg</div>", 'error' );
-
-                wp_safe_redirect( '/codigo-postal' );
-
-                return;
-            }
-
-            $_SESSION['zipcode'] = $zipcode;
-
-            if ( is_user_logged_in( ) ) {
-                wc( )->customer->set_billing_postcode( $zipcode );
-                wc( )->customer->set_shipping_postcode( $zipcode );
-            }
-
-            // Redirect user.
-            $redirect = get_permalink( wc_get_page_id( 'shop' ) );
-
-            if ($cat = get_term_by( 'slug', 'carta', 'product_cat' ) ) {
-                if ( $cat->term_id ) {
-                    $redirect = get_term_link( $cat->term_id, 'product_cat' );
+        public function handleSaveZipcode($isAjax = false)
+        {
+            if (!$isAjax) {
+                $nonce_value = isset($_POST['_wpnonce']) ? wp_unslash($_POST['_wpnonce']) : '';
+                $nonce_value = isset($_POST['update-zipcode-nonce']) ? wp_unslash($_POST['update-zipcode-nonce']) : $nonce_value;
+        
+                if (!isset($_POST['update_zipcode'], $_POST['zipcode']) || !wp_verify_nonce($nonce_value, 'update-zipcode')) {
+                    return;
                 }
             }
+        
+            $zipcode = sanitize_text_field($_POST['zipcode'] ?? null);
+        
+            try {
+                Helpers::getKitchenByZipcode($zipcode);
+            } catch (\Exception $e) {
+                $msg = $e->getMessage();
+                wc_add_notice("<div style='text-align:left'>$msg</div>", 'error');
+                if ($isAjax) {
+                    return ['success' => false, 'notices' => $this->get_formatted_notices()];
+                } else {
+                    return;
+                }
+            }
+        
+            $_SESSION['zipcode'] = $zipcode;
+        
+            if (is_user_logged_in()) {
+                wc()->customer->set_billing_postcode($zipcode);
+                wc()->customer->set_shipping_postcode($zipcode);
+            }
+        
+            // Redirect user.
+            $redirect = get_permalink(wc_get_page_id('shop'));
+        
+            if ($cat = get_term_by('slug', 'compartir', 'product_cat')) {
+                if ($cat->term_id) {
+                    $redirect = get_term_link($cat->term_id, 'product_cat');
+                }
+            }
+        
+            if ($isAjax) {
+                return ['success' => true, 'redirect' => $redirect];
+            } else {
+                wp_safe_redirect($redirect);
+                exit;
+            }
+        }
 
-            wp_safe_redirect( $redirect );
-            exit;
-
+        private function get_formatted_notices() {
+            $notices = wc_get_notices();
+            ob_start();
+            wc_print_notices();
+            $formatted_notices = ob_get_clean();
+            wc_clear_notices(); // Clear notices to prevent duplicates
+            return $formatted_notices;
         }
 
         /**
@@ -198,7 +215,7 @@ if ( ! class_exists( __NAMESPACE__ .'\ZipcodeController' ) ) {
                 } else if ( $wp->request === 'ubicaciones' ) {
                     return null;
                 } else {
-                    wp_safe_redirect( '/codigo-postal' );
+                    wp_safe_redirect( site_url() );
                 }
                 exit;
             }

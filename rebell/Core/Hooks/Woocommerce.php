@@ -112,6 +112,62 @@ if (!class_exists(__NAMESPACE__ . '\CustomizeWooCommerce')) {
 
             // Fix the prices showing without taxes...
             add_filter( 'woocommerce_adjust_non_base_location_prices', '__return_false' );
+
+
+            //codigo ajax php postal ajax - invbit
+            add_action('wp_ajax_handle_save_zipcode_ajax', [$this, 'handleSaveZipcodeAjax']);
+            add_action('wp_ajax_nopriv_handle_save_zipcode_ajax', [$this, 'handleSaveZipcodeAjax']);
+
+            //codigo ajax php login -invbit
+            add_action('wp_ajax_handle_login_ajax', [$this, 'handleLoginAjax']);
+            add_action('wp_ajax_nopriv_handle_login_ajax', [$this, 'handleLoginAjax']);
+
+        }
+
+        /**
+         *  Ajax para el modal login del usuario - invbit  
+         */
+        public function handleLoginAjax()
+        {
+            check_ajax_referer('login_action', 'login_nonce');
+        
+            $email = sanitize_email($_POST['email']);
+            $password = $_POST['password'];
+        
+            $user = wp_authenticate($email, $password);
+        
+            if (is_wp_error($user)) {
+                $error_message = $user->get_error_message();
+                wc_add_notice($error_message, 'error');
+                wp_send_json_error(['notices' => $this->get_formatted_notices()]);
+            } else {
+                wp_set_current_user($user->ID);
+                wp_set_auth_cookie($user->ID);
+                wp_send_json_success(['message' => 'Login successful']);
+            }
+        }
+        
+        private function get_formatted_notices() {
+            ob_start();
+            wc_print_notices();
+            $notices = ob_get_clean();
+            wc_clear_notices();
+            return $notices;
+        }
+
+        /**
+         *  Ajax para el modal del codigo zip - invbit  
+         */
+        public function handleSaveZipcodeAjax()
+        {
+            $zipcodeController = new ZipcodeController();
+            $result = $zipcodeController->handleSaveZipcode(true);
+            
+            if ($result['success']) {
+                wp_send_json_success(['redirect' => $result['redirect']]);
+            } else {
+                wp_send_json_error(['notices' => $result['notices']]);
+            }
         }
 
 

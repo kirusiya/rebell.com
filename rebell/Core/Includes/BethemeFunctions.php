@@ -225,7 +225,8 @@ function register_sweetalert_assets() {
 
 add_action('wp_head', 'custom_css_at_end', 100);
 function custom_css_at_end() {
-    echo '<link rel="stylesheet" href="' . get_template_directory_uri() . '/Core/Assets/Styles/custom.css" type="text/css" media="all">';
+    echo '<link rel="stylesheet" href="' . get_stylesheet_directory_uri() . '/Core/Assets/Styles/custom.css" type="text/css" media="all">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">';
 }
 function add_stylesheet_to_head() {
     ?>
@@ -242,23 +243,24 @@ add_action( 'wp_head', 'add_stylesheet_to_head' );
 
 
 /* ---------------------------------------------------------------------------
- * modal footer codigo zip
+ * modal footer codigo zip - invbit
  * --------------------------------------------------------------------------- */
 
-function modal_codigo_postal() {
-	
+ function modal_codigo_postal() {	
 	?>
-	<div class="modal micromodal-slide" aria-hidden="true" id="codigoZip">
+	<div class="modal micromodal-slide modalWhite" aria-hidden="true" id="codigoZip">
 		<div class="modal__overlay" tabindex="-1" data-micromodal-close>
 			<div class="modal__container" role="dialog" aria-modal="true" aria-labelledby="modal-1-title">
 				<header class="modal__header">
 					<h2 class="modal__title">Código Zip</h2>
-					<button class="modal__close" data-close-modal aria-label="Close modal" data-micromodal-close><span class="dashicons dashicons-no"></span></button>
+					<a href="javascript:void(0);" class="modal__close" data-close-modal aria-label="Close modal" data-micromodal-close>
+						<span class="dashicons dashicons-no"></span>
+ 					</a>
 				</header>
 				<main class="modal__content" id="codigoZipContent">
 
 					<?php
-					echo do_shortcode('[postcode-request title="Dino cúal es tu código postal para realizar tu pedido"]'); 	
+					echo do_shortcode('[postcode-request title="Dinos cúal es tu código postal para realizar tu pedido"]'); 	
 					?>
 
 				</main>
@@ -272,5 +274,67 @@ function modal_codigo_postal() {
 		
 }
 add_action( 'wp_footer', 'modal_codigo_postal' );
+
+
+/* ---------------------------------------------------------------------------
+ * modal login - invbit
+ * --------------------------------------------------------------------------- */
+function modal_login() {
+    ?>
+    <div class="modal micromodal-slide modalWhite" aria-hidden="true" id="loginModal">
+        <div class="modal__overlay" tabindex="-1" data-micromodal-close>
+            <div class="modal__container" role="dialog" aria-modal="true" aria-labelledby="modal-login-title">
+                <header class="modal__header">
+                    <h2 class="modal__title" id="modal-login-title">INICIAR SESIÓN</h2>
+                    <button class="modal__close" data-close-modal aria-label="Close modal" data-micromodal-close><span class="dashicons dashicons-no"></span></button>
+                </header>
+                <main class="modal__content" id="modal-login-content">
+                    <form method="post" class="LoginForm WCAccountForm woocommerce-form">
+                        <div class="woocommerce-notices-wrapper"></div>
+                        
+                        <p class="woocommerce-form-row woocommerce-form-row--wide form-row form-row-wide">
+                            <input
+                                type="email"
+                                class="woocommerce-Input woocommerce-Input--text input-text"
+                                name="email"
+                                id="login_email"
+                                autocomplete="email"
+                                placeholder="<?php esc_attr_e('Email', 'woocommerce'); ?>"
+                                required
+                            />
+                        </p>
+                        
+                        <p class="woocommerce-form-row woocommerce-form-row--wide form-row form-row-wide">
+                            <input
+                                type="password"
+                                class="woocommerce-Input woocommerce-Input--text input-text"
+                                name="password"
+                                id="login_password"
+                                autocomplete="current-password"
+                                placeholder="<?php esc_attr_e('Contraseña', 'woocommerce'); ?>"
+                                required
+                            />
+                        </p>
+                        
+                        <?php wp_nonce_field('login_action', 'login_nonce'); ?>
+                        <button
+                            type="submit"
+                            class="btn woocommerce-Button woocommerce-button"
+                            name="login"
+                            value="<?php esc_attr_e('Iniciar sesión', 'woocommerce'); ?>"
+                        >
+                            <?php esc_html_e('Iniciar sesión', 'woocommerce'); ?>
+                        </button>
+                    </form>
+                </main>
+            </div>
+        </div>
+    </div>
+    <?php
+}
+
+// Asegúrate de que esta línea esté presente en el archivo
+add_action('wp_footer', 'modal_login');
+
 
 
