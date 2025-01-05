@@ -17,6 +17,30 @@
 
 defined( 'ABSPATH' ) or die( '¯\_(ツ)_/¯' );
 
+function sort_payment_gateways($a, $b) {
+    // Define an array of cash payment method IDs
+    $cash_methods = ['cod', 'bacs', 'cheque', 'cash']; // Add more cash method IDs if needed
+
+    // Check if method a is a cash method
+    $a_is_cash = in_array($a->id, $cash_methods);
+    
+    // Check if method b is a cash method
+    $b_is_cash = in_array($b->id, $cash_methods);
+
+    // If a is cash and b is not, a should come first
+    if ($a_is_cash && !$b_is_cash) {
+        return -1;
+    }
+    // If b is cash and a is not, b should come first
+    elseif (!$a_is_cash && $b_is_cash) {
+        return 1;
+    }
+    // If both are cash or both are not cash, maintain original order
+    else {
+        return 0;
+    }
+}
+
 if ( ! is_ajax() ) {
 	do_action( 'woocommerce_review_order_before_payment' );
 } ?>
@@ -27,7 +51,10 @@ if ( ! is_ajax() ) {
 	<?php if ( WC()->cart->needs_payment() ) : ?>
 		<ul class="wc_payment_methods payment_methods methods">
 			<?php
+			
 			if ( ! empty( $available_gateways ) ) {
+                // Sort the gateways
+                uasort($available_gateways, 'sort_payment_gateways');
 				foreach ( $available_gateways as $gateway ) {
 					wc_get_template( 'checkout/payment-method.php', array( 'gateway' => $gateway ) );
 				}
@@ -49,6 +76,20 @@ if ( ! is_ajax() ) {
 		<?php wc_get_template( 'checkout/terms.php' ); ?>
 
 		<?php do_action( 'woocommerce_review_order_before_submit' ); ?>
+
+		<?php
+		$zipcode = $_SESSION['zipcode'] ?? '';
+
+		// Calculate shipping cost based on zipcode
+		$shipping_cost = 0;
+		if ($zipcode) {
+			$shipping_cost = get_shipping_cost_by_zipcode($zipcode);
+		}
+		$subtotal = WC()->cart->subtotal - (WC()->cart->get_discount_total() + WC()->cart->get_discount_tax());
+		$total = $subtotal + $shipping_cost;
+		?>
+
+		<h4><b>TOTAL</b> <?= wc_price($total); ?></h4>
 
 		<?php echo apply_filters( 'woocommerce_order_button_html', '<button type="submit" class="button alt" name="woocommerce_checkout_place_order" id="place_order" value="' . esc_attr( $order_button_text ) . '" data-value="' . esc_attr( $order_button_text ) . '">' . esc_html( $order_button_text ) . '</button>' ); // @codingStandardsIgnoreLine ?>
 

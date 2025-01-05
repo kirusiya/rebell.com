@@ -209,6 +209,7 @@
         .replace( new RegExp( /(\b,\s\b)(?!.*\1)/ ), ' y ' )
     }
 
+    /* click */
     $( document ).on( 'click', '.addCustomProductToCart', function( e ) {
       e.preventDefault( );
   
@@ -253,21 +254,93 @@
       $.ajax( {
         ...request,
         beforeSend: function ( response ) {
-          $thisButton.removeClass( 'added' ).addClass( 'loading' );
+          console.log(response)
+          //$thisButton.removeClass( 'added' ).addClass( 'loading' );
+          $thisButton.removeClass( 'added' ).addClass( 'loading' ).append('<i class="fa fa-cog fa-spin"></i> ');
         },
         complete: function ( response ) {
-          $thisButton.addClass( 'added' ).removeClass( 'loading' );
+         // $thisButton.addClass( 'added' ).removeClass( 'loading' );
+          $thisButton.addClass( 'added' ).removeClass( 'loading' ).find('.fa-cog').remove();
         },
         success: function ( response ) {
+          console.log(response)
           if ( response.error && response.product_url ) {
             alert( rebell.outOfStock );
             window.location = window.location;
             return;
           }
+
+          /**/
+          // Mostrar SweetAlert personalizado
+          Swal.fire({
+            icon: 'success',
+            title: 'Agregado al Carrito Correctamente!',
+            toast: true,
+            position: 'top',
+            showConfirmButton: false,
+            timer: 2000,
+            timerProgressBar: true,
+            didOpen: (toast) => {
+                toast.addEventListener('mouseenter', Swal.stopTimer);
+                toast.addEventListener('mouseleave', Swal.resumeTimer);
+                const swalContainer = document.querySelector('.swal2-container');
+                if (swalContainer) {
+                    swalContainer.style.overflow = 'hidden';
+                    swalContainer.style.animation = 'none';
+                    swalContainer.offsetHeight; // Forzar un reflow
+                    swalContainer.style.animation = 'customSlideInDown 0.5s forwards';
+                }
+                const progressBar = toast.querySelector('.swal2-timer-progress-bar');
+                if (progressBar) {
+                    progressBar.style.transform = 'scaleX(0)';
+                    progressBar.style.transformOrigin = 'center';
+                    setTimeout(() => {
+                        progressBar.style.transition = 'transform 3s linear';
+                        progressBar.style.transform = 'scaleX(1)';
+                    }, 100);
+                }
+            },
+            willClose: () => {
+                return new Promise(resolve => {
+                    const swalContainer = document.querySelector('.swal2-container');
+                    if (swalContainer) {
+                        swalContainer.style.animation = 'customSlideOutUp 1s forwards';
+                    }
+                    setTimeout(resolve, 1000);
+                });
+            },
+            customClass: {
+                popup: 'swal-custom-popup',
+                icon: 'swal-custom-icon',
+                title: 'swal-custom-title'
+            },
+            showClass: {
+                popup: 'swal-custom-animate-success swal-custom-animate-show'
+            },
+            hideClass: {
+                popup: 'swal-custom-animate-success swal-custom-animate-hide'
+            }
+          }).then(() => {
+            setTimeout(() => {
+              
+              if ($('.custom-cart-button').length > 0) {
+                // Si existe la clase, solo cierra el modal
+                MicroModal.close('ProductModal');
+              } else {
+                // Si no existe la clase, cierra el modal y recarga la página
+                MicroModal.close('ProductModal');
+                location.reload();
+              }
+
+            }, 1000); // Retraso para permitir que la animación de salida se complete
+          });
+          /**/
+
           $( document.body ).trigger( 'added_to_cart', [ response.fragments, response.cart_hash, $thisButton ] );
         }
       } );
-    } );
+    });
+    /* click */
 
   }
 
@@ -406,6 +479,7 @@
         $button.addClass( 'loading' );
       },
       complete: function ( response ) {
+        console.log(response)
         $button.removeClass( 'loading' );
       },
       error: function ( error ) {
@@ -414,6 +488,7 @@
         return MicroModal.show( 'CartErrors_Modal' );
       },
       success: function ( response ) {
+        console.log(response)
         window.location = $button.attr( 'href' );
       }
     } );
@@ -527,7 +602,7 @@
           MicroModal.close('codigoZip');
           window.location.href = response.data.redirect;
         } else {
-          $('.woocommerce-notices-wrapper').html(response.data.notices);
+          $('.woocommerce-notices-wrapper.codeZipRes').html(response.data.notices);
         }
       },
       error: function() {
@@ -570,7 +645,7 @@
                     toast: true,
                     position: 'top',
                     showConfirmButton: false,
-                    timer: 3000,
+                    timer: 2000,
                     timerProgressBar: true,
                     didOpen: (toast) => {
                         toast.addEventListener('mouseenter', Swal.stopTimer);
@@ -618,7 +693,7 @@
                     }, 1000); // Retraso para permitir que la animación de salida se complete
                 });
             } else {
-                $('.woocommerce-notices-wrapper', form).html(response.data.notices);
+                $('.woocommerce-notices-wrapper.loginResp', form).html(response.data.notices);
             }
         },
         error: function() {
@@ -636,6 +711,55 @@
       e.preventDefault();
       MicroModal.show('loginModal');
   });
+
+  $(document).ready(function() {
+
+    $('a.userLoginProd').on('click', function(e) {
+        e.preventDefault();
+        MicroModal.show('loginModal');
+    });
+    
+    $('.userLoginProd a#header_cart').on('click', function(e) {
+      e.preventDefault();
+      MicroModal.show('loginModal');
+    });
+    
+    $('.userLoginProd a#header_cart i').on('click', function(e) {
+      e.preventDefault();
+      MicroModal.show('loginModal');
+    });
+
+    $('.userLoginProd a#header_cart span').on('click', function(e) {
+      e.preventDefault();
+      MicroModal.show('loginModal');
+    });
+
+  });
+
+  $(document).on('click', 'a.loginLinkModalZip', function(e) {
+      e.preventDefault();
+      
+      // Cerrar el modal de código postal
+      MicroModal.close('codigoZip');
+      
+      // Abrir el modal de inicio de sesión
+      setTimeout(function() {
+          MicroModal.show('loginModal');
+      }, 300);
+  });
+  /**/
+  $(document).ready(function() {
+    // New code to select "for_takeaway" and trigger functionality
+    if ($('.woocommerce-cart').length) {
+      const $takeawayRadio = $('#for_takeaway');
+      
+      if ($takeawayRadio.length && !$takeawayRadio.prop('disabled')) {
+          $takeawayRadio.prop('checked', true).trigger('change');
+      } else if ($('#for_delivery').length && !$('#for_delivery').prop('disabled')) {
+          $('#for_delivery').prop('checked', true).trigger('change');
+      }
+    }
+  });  
   /**/
 
 } )( jQuery );

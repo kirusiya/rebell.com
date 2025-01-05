@@ -1,3 +1,7 @@
+body.swal2-toast-shown .swal2-container.swal2-top {
+    z-index: 999999999999;
+}
+
 .swal-custom-popup {
     width: auto !important;
     max-width: 350px !important;
@@ -99,8 +103,8 @@
     color: #000;
 }
 
-.modalWhite .modal__header{
-    padding: 1rem;
+.modalWhite .modal__header {
+    padding: 30px;
 }
 
 .modalWhite .modal__container {
@@ -108,6 +112,9 @@
     border-radius: 10px;
 }
 
+
+
+/******===modal codigo zip===******/
 
 .modalWhite .ZipcodeRequestForm input,
 .ZipcodeRequestForm input:focus {
@@ -137,7 +144,7 @@
     color: #000000b7 !important;
 }
 
-/* Para navegadores más antiguos */
+/* codigo para el placeholder */
 .modalWhite .ZipcodeRequestForm input::-webkit-input-placeholder {
     color: #000000b7 !important;
 }
@@ -158,7 +165,7 @@
 .modalWhite input::placeholder {
     color: #000000b7 !important;
 }
-
+/* codigo para el placeholder */
 
 .modalWhite .ZipcodeRequestForm::after {
     display: none;
@@ -166,8 +173,329 @@
 
 .modalWhite .ZipcodeRequestForm .Title {
     color: #000;
+    font-size: 16px;
+    text-align: left;
 }
 
 .modalWhite .ZipcodeRequestForm {
     border: none;
+    padding: 30px;
 }
+
+main#codigoZipContent {
+    width: 480px;
+    max-width: -webkit-fill-available;
+}
+/******===modal codigo zip===******/
+
+/******===modal login===******/
+
+.modalWhite .LoginForm input,
+.LoginForm input:focus {
+    background: none !important;
+    color: var(--darkest-color);
+    border: none !important; /* Elimina cualquier borde previo */
+    border-bottom: 1px solid #000 !important; /* Asegura un borde negro */
+    text-align: center;
+    font-size: 1rem;
+    margin-bottom: 0;
+    width: 100%;
+    box-shadow: none !important;
+    outline: none !important;
+    -webkit-appearance: none;
+    appearance: none;
+}
+
+.modalWhite .LoginForm input,
+.LoginForm input:focus {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+
+.modalWhite .LoginForm input::placeholder {
+    color: #000000b7 !important;
+}
+
+/* codigo para el placeholder */
+.modalWhite .LoginForm input::-webkit-input-placeholder {
+    color: #000000b7 !important;
+}
+
+.modalWhite .LoginForm input::-moz-placeholder {
+    color: #000000b7 !important;
+    opacity: 1;
+}
+
+.modalWhite .LoginForm input:-ms-input-placeholder {
+    color: #000000b7 !important;
+}
+
+.modalWhite .LoginForm input::-ms-input-placeholder {
+    color: #000000b7 !important;
+}
+
+.modalWhite input::placeholder {
+    color: #000000b7 !important;
+}
+/* codigo para el placeholder */
+
+.modalWhite .LoginForm::after {
+    display: none;
+}
+
+.modalWhite .LoginForm .Title {
+    color: #000;
+    font-size: 16px;
+    text-align: left;
+}
+
+.modalWhite .LoginForm {
+    border: none;
+    padding: 30px;
+}
+
+main#modal-login-content {
+    width: 480px;
+    max-width: -webkit-fill-available;
+}
+/******===modal login===******/
+
+
+button.btn.btn-black:hover {
+    background: transparent;
+    color: #000;
+}
+button.btn.btn-black {
+    background: #000;
+    color: #fff;
+    border: 1px solid #000;
+    margin-top: 10px;
+}
+
+
+/**/
+body:not(.logged-in) .userLogin {
+    display: inline-block;
+}
+
+body:not(.logged-in) .userAccount {
+    display: none;
+}
+
+/* Mostrar "Mi Cuenta" cuando el body tenga la clase "logged-in" */
+body.logged-in .userAccount {
+    display: inline-block;
+}
+
+body.logged-in .userLogin {
+    display: none;
+}
+
+
+.login-links {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+    gap: 20px;
+    margin-bottom: 30px;
+}
+
+.login-link {
+    font-size: 0.9rem;
+    color: var(--dark-color, #333);
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s ease;
+    text-decoration: underline !important;
+}
+
+.login-link:hover {
+    color: var(--primary-color, #007cba);
+}
+
+
+.SingleProduct__Footer, .SingleProduct__Footer form.cart {
+    padding-bottom: 30px;
+}
+
+
+/* Contenedor principal: alinear elementos con Flexbox */
+#header_cart {
+    display: flex; /* Activar Flexbox */
+    align-items: center; /* Alinear verticalmente */
+    justify-content: center; /* Alinear horizontalmente */
+    gap: 0px; /* Espacio entre el icono y el texto */
+    text-decoration: none; /* Opcional: Elimina el subrayado del enlace */
+}
+
+/* Icono */
+.icon-bag-fine:before {
+    content: ""; /* Remueve cualquier contenido textual */
+    background: url('/wp-content/themes/rebell/Core/Assets/Images/Icons/cart-icon.svg') no-repeat center center !important;
+    background-size: contain !important;
+    display: inline-block;
+    width: 25px;
+    height: 25px;
+}
+
+/* Texto */
+#header_cart span {
+    font-size: 1rem; /* Ajusta el tamaño del texto */
+    line-height: 1; /* Asegura alineación vertical */
+    display: inline-block;
+}
+
+a#header_cart:hover {
+    color: #000;
+}
+
+
+.topHeaderLogin {
+    position: absolute;
+    bottom: 15px;
+    right: 30px;
+    color: #fff;
+}
+/**/
+
+/*cart*/
+.woocommerce-cart .woocommerce-cart-form {
+    max-width: unset;
+}
+.woocommerce-cart .woocommerce-cart-form .Totals::before {
+    border: none;
+}
+
+.woocommerce-cart .ItemHeading span.ItemPrice {
+    color: #000;
+    margin-left: 7px;
+}
+
+.woocommerce-cart table.shop_table .ItemHeading .Wrapper .ItemName {
+    font-weight: normal;
+    text-transform: uppercase;
+}
+
+.woocommerce-cart .OrderType .Wrapper svg {
+    fill: #000;
+}
+
+.woocommerce-cart .OrderType label {
+    color: #000;
+    cursor: pointer;
+    border: 2px solid #000;
+}
+
+.woocommerce-cart .OrderType input:checked + label, .woocommerce-cart .OrderType label:hover:not(.disabled) {
+    border: 2px solid var(--primary-color);
+}
+
+.woocommerce-cart .woocommerce-cart-form .QuantityBtn .dashicons {
+    color: #000;
+    font-weight: 700;
+}
+
+.woocommerce-cart .woocommerce-cart-form .QuantityBtn:hover::after {
+    background: transparent;
+}
+
+.woocommerce-cart .woocommerce .Qty.QuantityInput {
+    background: transparent;
+    color: #000;
+    box-shadow: none;
+}
+
+.woocommerce-cart .actions .ApplyCoupon {
+    gap: 30px;
+}
+
+.woocommerce-cart .actions .ApplyCoupon > #coupon_code {
+    padding: .5rem;
+    border: none;
+    border-bottom: 1px solid #000;
+    flex-grow: 0.8;
+    background: transparent;
+    box-shadow: none;
+}
+
+
+.woocommerce-cart .actions .ApplyCoupon > button {
+    color: var(--darkest-color);
+    max-width: 150px;
+    background: transparent !important;
+}
+
+.woocommerce-cart .actions .ApplyCoupon > button:hover {
+    color: var(--darkest-color);
+    max-width: 150px;
+    background: transparent !important;
+}
+
+.woocommerce-cart .actions .ApplyCoupon > button:hover {
+    color: #000;
+    border: 2px solid #f1ea52 !important;
+    background: #f1ea52 !important;
+}
+
+
+.woocommerce-cart #OrderSchedule .SelectWrapper {
+    position: relative;
+    margin: 0 auto;
+    width: 100%;
+}
+
+.woocommerce-cart #OrderSchedule .SelectWrapper select {
+    color: #000;
+    border: 2px solid #000;
+    width: 100%;
+    text-align: left;
+    background: transparent;
+    text-transform: uppercase;
+}
+.woocommerce-cart #OrderSchedule .SelectWrapper:after {
+    border-top: 6px solid #000;
+}
+
+
+.woocommerce-cart .Totals {
+    margin-top: 20px;
+    padding-top: 20px;
+}
+
+.woocommerce-cart .TotalRow {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+
+.woocommerce-cart .TotalRow--final {
+    font-weight: bold;
+    font-size: 1.2em;
+    margin-top: 15px;
+    padding-top: 0;
+    background: #000;
+    color: #f1ea52;
+}
+
+.woocommerce-cart .TotalLabel {
+    text-align: left;
+}
+
+.woocommerce-cart .TotalValue {
+    text-align: right;
+    font-weight: 700;
+}
+
+/*cart*/
+
+/*checkout*/
+.woocommerce-checkout #Content .section {
+    background: transparent !important;
+} 
+
+.woocommerce-checkout .woocommerce-privacy-policy-text {
+    display: none;
+}
+
+/*checkout*/

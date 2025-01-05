@@ -31,8 +31,8 @@ if ( ! $checkout->is_registration_enabled() && $checkout->is_registration_requir
 
 		<?php do_action( 'woocommerce_checkout_before_customer_details' ); ?>
 
-		<div class="col2-set" id="customer_details">
-			<div class="col-1">
+		<div class="col2-set" id="order_address">
+			<div class="col-1"> 
 				<?php /* do_action( 'woocommerce_checkout_shipping' ); */ ?>
 
 				<?php do_action( 'woocommerce_checkout_before_order_review_heading' ); ?>
@@ -40,21 +40,24 @@ if ( ! $checkout->is_registration_enabled() && $checkout->is_registration_requir
 				<?php do_action( 'woocommerce_checkout_before_order_review' ); ?>
 
 				<div id="order_review" class="woocommerce-checkout-review-order">
-					<?php do_action( 'woocommerce_checkout_order_review' ); ?>
+					<?php //do_action( 'woocommerce_checkout_order_review' ); ?>
 				</div>
 
 				<?php do_action( 'woocommerce_checkout_after_order_review' ); ?>
-			</div>
 
-			<div id="order_address" class="col-2">
 				<h2>Confirma tu dirección</h2>
 
 				<?php do_action( 'woocommerce_checkout_billing' ); ?>
 				<?php do_action( 'woocommerce_checkout_shipping' ); ?>
+
+			</div>
+
+			<div id="paymentCol" class="col-2">
+				<?php do_action( 'woocommerce_checkout_after_customer_details' );//mover el checkout por defecto ?>
 			</div>
 		</div>
 
-		<?php do_action( 'woocommerce_checkout_after_customer_details' ); ?>
+		
 
 	<?php endif; ?>
 

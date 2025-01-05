@@ -85,9 +85,13 @@ do_action( 'woocommerce_before_main_content' ); ?>
 } ?>
 
 <?php
-echo '<div class="row-cart">';
-echo '<a id="header_cart" href="<?= esc_url(wc_get_cart_url()) ?>">';
-        echo '<span><?= esc_html($woocommerce->cart->cart_contents_count) ?></span>';
+
+$claseLogin = is_user_logged_in() ? '' : 'userLoginProd';
+
+// Mostrar el carrito
+echo '<div class="row-cart ' . esc_attr($claseLogin) . '">';
+echo '<a id="header_cart"  href="' . esc_url(wc_get_cart_url()) . '">';
+echo '<span>' . esc_html(WC()->cart->get_cart_contents_count()) . '</span>';
 echo '</a>';
 echo '</div>';
 
@@ -95,10 +99,22 @@ echo '</div>';
 
 
 // Código para el botón de "Ir al Carrito"
-if ( WC()->cart->get_cart_contents_count() > 0 ) { // Verificamos si hay productos en el carrito
+if (WC()->cart->get_cart_contents_count() > 0) { // Verificamos si hay productos en el carrito
     echo '<div class="custom-cart-button" style="text-align: center; margin: 20px 0;">';
-    echo '<a href="' . esc_url( wc_get_cart_url() ) . '" class="button alt" id="custom_cart_button">Finalizar compra</a>';
+    echo '<a href="' . esc_url(wc_get_cart_url()) . '" class="button alt ' . esc_attr($claseLogin) . '" id="custom_cart_button">Finalizar compra</a>';
     echo '</div>';
+}else{
+
+?>
+<style>
+	.Rebell.woocommerce.tax-product_cat .products.grid {
+		margin-bottom: 100px;
+	}
+</style>
+
+<?php
+
+
 }
 ?>
 

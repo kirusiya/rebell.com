@@ -23,11 +23,21 @@ defined('ABSPATH') or die('¯\_(ツ)_/¯'); ?>
 
 	<label for="payment_method_<?= esc_attr($gateway->id); ?>">
 		<?php if ($gateway->id === 'cash') : ?>
-			<svg class="PaymentButton" viewBox="-949 951 100 100" xmlns="http://www.w3.org/2000/svg">
-				<path d="M-912 981l-1-2h-26l-1 1v42l1 1h26l1-2c-7-5-11-12-11-20s5-15 11-20zM-859 979h-26l-1 2c6 5 11 12 11 20s-5 15-11 20l1 2h26l1-1v-42l-1-1z"></path>
-				<path d="M-853 973h-92l-2 1v54l2 1h92l2-1v-54l-2-1zm-1 52l-2 1h-86l-2-1v-48l2-1h86l2 1v48z"></path>
-				<path d="M-896 1010c-2 0-5-1-6-3h7v-5h-8v-1-1h8v-5h-7c1-2 4-3 6-3l4 1 2-4-6-2h-1a10 10 0 00-8 4l-2 4h-4v5h3v2h-3v5h4l2 4 4 3 4 1h1l6-2-2-4-4 1z"></path>
-			</svg>
+			<svg  class="PaymentButton" version="1.0" xmlns="http://www.w3.org/2000/svg"
+				width="59.000000pt" height="58.000000pt" viewBox="0 0 59.000000 58.000000"
+				preserveAspectRatio="xMidYMid meet">
+				<g transform="translate(0.000000,58.000000) scale(0.100000,-0.100000)"
+				stroke="none">
+				<path d="M177 474 c-3 -3 4 -25 15 -49 l21 -43 -45 -54 c-73 -85 -81 -113 -53
+				-168 25 -48 61 -60 182 -60 127 0 163 15 183 75 16 48 3 81 -56 151 l-47 55
+				16 35 c31 63 29 64 -96 64 -63 0 -116 -3 -120 -6z m203 -19 c0 -4 -7 -19 -16
+				-36 -14 -29 -18 -30 -71 -27 -52 3 -59 6 -76 36 l-19 32 91 0 c50 0 91 -2 91
+				-5z m11 -127 c78 -96 86 -127 45 -175 -24 -28 -26 -28 -139 -28 -108 0 -117 1
+				-141 24 -43 40 -36 84 25 159 l51 62 62 0 c61 0 63 -1 97 -42z"/>
+				<path d="M270 270 c-16 -16 -18 -25 -10 -40 11 -21 27 -25 54 -14 23 9 20 51
+				-4 64 -15 8 -24 6 -40 -10z"/>
+				</g>
+			</svg>	
 		<?php endif; ?>
 		<?php if ($gateway->id === 'card') : ?>
 			<svg class="PaymentButton" viewBox="0 0 16.9 16.9" xmlns="http://www.w3.org/2000/svg">

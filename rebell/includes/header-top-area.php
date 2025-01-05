@@ -120,7 +120,25 @@ if (mfn_header_style(true) == 'header-overlay') : ?>
                                         <a href="<?= get_category_link( $cat->term_id ) ?>"><?= $cat->name ?></a>
                                     </li>
                                     <?php endforeach; ?>
+                                    <?php
+                                    if(!is_user_logged_in()){
+                                        ?>
+                                        <a href="javascript:void(0);" class="userLogin topHeaderLogin"><?php echo __( 'Iniciar Sesión', 'rebell' ) ?></a>
+                                        <?php
+                                    }else{
+
+                                        ?>
+                                        <a href="/mi-cuenta" class="topHeaderLogin"><?php echo __( 'Mi cuenta', 'rebell' ) ?></a>
+                                        <?php
+                                    }
+                                    ?>        
+
+
+                                    
 			                    </ul>
+                                            
+                                
+                                
                             </nav>
                             <?php endif;  ?>
                         <?php endif;  ?>

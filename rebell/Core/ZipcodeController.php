@@ -88,7 +88,7 @@ if ( ! class_exists( __NAMESPACE__ .'\ZipcodeController' ) ) {
 
             <form method="post" class="ZipcodeRequestForm woocommerce-form">
 
-                <div class="woocommerce-notices-wrapper">
+                <div class="woocommerce-notices-wrapper codeZipRes">
                     <?php wc_print_notices(); ?>
                 </div>
 
@@ -113,7 +113,7 @@ if ( ! class_exists( __NAMESPACE__ .'\ZipcodeController' ) ) {
                 <?php wp_nonce_field( 'update-zipcode', 'update-zipcode-nonce' ); ?>
                 <button
                     type="submit"
-                    class="btn woocommerce-Button woocommerce-button"
+                    class="btn btn-black"
                     name="update_zipcode"
                     value="<?php esc_attr_e( 'Aceptar', 'betheme' ); ?>"
                 >

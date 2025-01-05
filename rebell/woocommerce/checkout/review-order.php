@@ -22,7 +22,7 @@ use Invbit\Core\WCCheckoutController;
 
 defined( 'ABSPATH' ) or die( '¯\_(ツ)_/¯' );
 
-$shippingCost = WCCheckoutController::setShippingTotal( ); ?>
+$shippingCost = WCCheckoutController::setShippingTotal( ); 	?>
 
 <div class="woocommerce-checkout-review-order-table">
 	<h2>Resumen</h2>
@@ -87,14 +87,28 @@ $shippingCost = WCCheckoutController::setShippingTotal( ); ?>
 		<?php endforeach; ?>
 
 		<!-- Shipping -->
-		<?php if ( WC( )->cart->get_cart_shipping_total( ) && ( WC( )->session->get( 'order_type' ) === 'delivery' ) ) : ?>
+
+
+		<?php
+		$zipcode = $_SESSION['zipcode'] ?? '';
+
+		// Calculate shipping cost based on zipcode
+		$shipping_cost = 0;
+		if ($zipcode) {
+			$shipping_cost = get_shipping_cost_by_zipcode($zipcode);
+		}
+		$subtotal = WC()->cart->subtotal - (WC()->cart->get_discount_total() + WC()->cart->get_discount_tax());
+		$total = $subtotal + $shipping_cost;
+		?>
+
+		<?php if ( $zipcode) : ?>
 
 			<?php do_action( 'woocommerce_review_order_before_shipping' ); ?>
 
 			<div class="CartItem Shipping">
 				<div class="Shipping">
 					<span>Gastos de envío</span>
-					<span class="Value"><?= WC( )->cart->get_cart_shipping_total( ) ?></span>
+					<span class="Value"><?= wc_price( $shipping_cost ) ?></span>
 				</div>
 			</div>
 
@@ -109,7 +123,7 @@ $shippingCost = WCCheckoutController::setShippingTotal( ); ?>
 
 	<div class="OrderTotal">
 		<span><?= esc_html( 'Total', 'woocommerce' ) ?></span>
-		<span class="Total"><?= WC( )->cart->get_total( ); ?></span>
+		<span class="Total"><?= wc_price($total); ?></span>
 		<?php /* <span><?php wc_cart_totals_order_total_html(); ?></span> */ ?>
 	</div>
 

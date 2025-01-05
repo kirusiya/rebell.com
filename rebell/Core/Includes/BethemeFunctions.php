@@ -221,6 +221,9 @@ add_action('wp_enqueue_scripts', 'register_sweetalert_assets');
 function register_sweetalert_assets() {
     wp_enqueue_script('sweetalert', 'https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.js');
     wp_enqueue_style('sweetalert', 'https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css');
+
+	wp_enqueue_style('fontawesome-pro', 'https://pro.fontawesome.com/releases/v5.10.0/css/all.css');
+	wp_enqueue_style('bootstrap-grid', 'https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/css/bootstrap-grid.min.css');
 }
 
 add_action('wp_head', 'custom_css_at_end', 100);
@@ -264,6 +267,19 @@ add_action( 'wp_head', 'add_stylesheet_to_head' );
 					?>
 
 				</main>
+
+				<?php
+				if(!is_user_logged_in()){
+				?>
+
+				<div class="login-links">
+					<a href="javascript:void(0);" class="login-link loginLinkModalZip">Iniciar Sesión</a>
+					<a href="/mi-cuenta?register" class="login-link">Regístrate</a>
+				</div>
+				<?php
+				}
+				?>	
+
 				<footer class="modal__footer"></footer>
 			</div>
 		</div>
@@ -290,7 +306,9 @@ function modal_login() {
                 </header>
                 <main class="modal__content" id="modal-login-content">
                     <form method="post" class="LoginForm WCAccountForm woocommerce-form">
-                        <div class="woocommerce-notices-wrapper"></div>
+                        <div class="woocommerce-notices-wrapper loginResp">
+							<?php wc_print_notices(); ?>
+						</div>
                         
                         <p class="woocommerce-form-row woocommerce-form-row--wide form-row form-row-wide">
                             <input
@@ -299,7 +317,7 @@ function modal_login() {
                                 name="email"
                                 id="login_email"
                                 autocomplete="email"
-                                placeholder="<?php esc_attr_e('Email', 'woocommerce'); ?>"
+                                placeholder="<?php esc_attr_e('Email', 'rebell'); ?>"
                                 required
                             />
                         </p>
@@ -311,7 +329,7 @@ function modal_login() {
                                 name="password"
                                 id="login_password"
                                 autocomplete="current-password"
-                                placeholder="<?php esc_attr_e('Contraseña', 'woocommerce'); ?>"
+                                placeholder="<?php esc_attr_e('Contraseña', 'rebell'); ?>"
                                 required
                             />
                         </p>
@@ -319,13 +337,27 @@ function modal_login() {
                         <?php wp_nonce_field('login_action', 'login_nonce'); ?>
                         <button
                             type="submit"
-                            class="btn woocommerce-Button woocommerce-button"
+                            class="btn btn-black"
                             name="login"
                             value="<?php esc_attr_e('Iniciar sesión', 'woocommerce'); ?>"
                         >
-                            <?php esc_html_e('Iniciar sesión', 'woocommerce'); ?>
+                            <?php esc_html_e('Entrar en tu Cuenta', 'rebell'); ?>
                         </button>
                     </form>
+
+					<?php
+					if(!is_user_logged_in()){
+					?>
+					<div class="login-links">
+						<a href="javascript:void(0);" class="login-link" style="text-decoration: none !important;pointer-events: none;">¿Aún no tienes cuenta?</a>
+						<a href="/mi-cuenta?register" class="login-link">Regístrate</i>
+						</a>
+					</div>	
+					<?php
+					}
+					?>
+
+
                 </main>
             </div>
         </div>
@@ -335,6 +367,43 @@ function modal_login() {
 
 // Asegúrate de que esta línea esté presente en el archivo
 add_action('wp_footer', 'modal_login');
+
+
+function get_shipping_cost_by_zipcode($zipcode) {
+    // Get all shipping zones
+    $shipping_zones = WC_Shipping_Zones::get_zones();
+    
+    foreach ($shipping_zones as $zone) {
+        $zone_obj = new WC_Shipping_Zone($zone['id']);
+        $locations = $zone_obj->get_zone_locations();
+        
+        foreach ($locations as $location) {
+            if ($location->type === 'postcode' && $location->code === $zipcode) {
+                // We found a matching zone, now get the shipping method
+                $shipping_methods = $zone_obj->get_shipping_methods(true);
+                
+                if (!empty($shipping_methods)) {
+                    // Return the cost of the first available shipping method
+                    $method = reset($shipping_methods);
+                    return $method->get_option('cost');
+                }
+            }
+        }
+    }
+    
+    // If no specific zone is found, return the cost from the default zone
+    $default_zone = new WC_Shipping_Zone(0);
+    $default_methods = $default_zone->get_shipping_methods(true);
+    
+    if (!empty($default_methods)) {
+        $method = reset($default_methods);
+        return $method->get_option('cost');
+    }
+    
+    // If no shipping method is found, return 0
+    return 0;
+}
+
 
 
 
